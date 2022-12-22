@@ -3,6 +3,8 @@ import Banner from "../UI/Banner";
 import GymDescriptionBanner from "../components/GymDescriptionBanner";
 import TopActivities from "../components/TopActivities";
 import FacilitiesSlider from "../components/FacilitiesSlider";
+import PeopleCallOut from "../components/PeopleCallOut";
+import Footer from "../UI/Footer";
 
 const HomePage = () => {
   return (
@@ -11,7 +13,8 @@ const HomePage = () => {
       <TopActivities />
       <GymDescriptionBanner/>
       <FacilitiesSlider />
-      <div>HomePage</div>
+      <PeopleCallOut />
+      <Footer/>
     </div>
   );
 };

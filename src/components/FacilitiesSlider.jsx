@@ -38,7 +38,7 @@ const Facilities = () => {
   return (
     <div className="relative overflow-hidden py-4 px-12 mt-10 mx-6">
       <div className="text-3xl font-bold text-center text-gray-600 px-4 py-6">
-        Instalações
+        Nossas Instalações
       </div>
       <div className="h-full w-full">
         <div className="relative h-full max-w-screen-xl mx-auto">
@@ -50,26 +50,6 @@ const Facilities = () => {
         </div>
       </div>
       <div className="absolute inset-y-0 right-0 flex items-center inset-auto lg:mr-20">
-        <button
-          className="p-1 rounded-full hover:bg-gray-300 focus:outline-none focus:shadow-outline-blue focus:border-blue-300  ease-in-out transition-transform duration-200 transform hover:scale-110"
-          onClick={goToPrev}
-        >
-          <svg
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M15 19l-7-7 7-7"
-            />
-          </svg>
-        </button>
-      </div>
-      <div className="absolute inset-y-0 left-0 flex items-center inset-auto lg:ml-20">
         <button
           className="p-1 rounded-full hover:bg-gray-300 focus:outline-none focus:shadow-outline-blue focus:border-blue-300  ease-in-out transition-transform duration-200 transform hover:scale-110"
           onClick={goToNext}
@@ -85,6 +65,26 @@ const Facilities = () => {
               stroke-linejoin="round"
               stroke-width="2"
               d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </button>
+      </div>
+      <div className="absolute inset-y-0 left-0 flex items-center inset-auto lg:ml-20">
+        <button
+          className="p-1 rounded-full hover:bg-gray-300 focus:outline-none focus:shadow-outline-blue focus:border-blue-300  ease-in-out transition-transform duration-200 transform hover:scale-110"
+          onClick={goToPrev}
+        >
+          <svg
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 19l-7-7 7-7"
             />
           </svg>
         </button>
