@@ -25,7 +25,7 @@ function Banner() {
     <div className="bg-gray-800 py-4">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-bold text-gray-100">Gym Title</h1>
+          <h1 className="text-2xl font-bold text-gray-100">Giásio Albi</h1>
           <div className="hidden md:flex">
             <div className="flex items-center justify-center font-bold py-2 px-4 mr-4 hover:text-white text-gray-400 focus:outline-none focus:shadow-outline transition-all duration-300 ease-in-out hover:bg-transparent hover:border-transparent">
               <HiOutlineUserCircle className="mr-2" />

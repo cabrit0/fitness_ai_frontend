@@ -1,95 +1,106 @@
 import React from "react";
+import yoga from "../assets/yoga.jpg";
+import zumba from "../assets/zumba.jpg";
+import pilates from "../assets/pilates.jpg";
+import boxing from "../assets/boxing.jpg";
+import spin from "../assets/spin.jpg";
+import bare from "../assets/bare.jpg";
+import hiit from "../assets/hiit.jpg";
+import kickboxing from "../assets/kickboxing.jpg";
+import cardio from "../assets/cardio.jpg";
+import dance from "../assets/dance.jpg";
+import swimming from "../assets/swimming.jpg";
+import strength from "../assets/strenght.jpg";
 
 const activities = [
   {
     id: 1,
     title: "Yoga",
-    description: "Yoga is a physical and mental discipline.",
-    image: "https://picsum.photos/id/1/200/300",
+    description: "Yoga é uma disciplina física e mental.",
+    image: yoga,
     rating: 3.9,
   },
   {
     id: 2,
     title: "Pilates",
-    description: "Pilates is a low-impact exercise system.",
-    image: "https://picsum.photos/id/2/200/300",
+    description: "Pilates é um sistema de exercícios de baixo impacto.",
+    image: pilates,
     rating: 3.8,
   },
   {
     id: 3,
     title: "Boxing",
-    description: "Boxing is a combat sport with protective gloves.",
-    image: "https://picsum.photos/id/3/200/300",
+    description: "O boxe é um desporto de combate com luvas de proteção.",
+    image: boxing,
     rating: 4.8,
   },
   {
     id: 4,
     title: "Spinning",
-    description: "Spinning is an indoor cycling workout.",
-    image: "https://picsum.photos/id/4/200/300",
+    description: "Spinning é um treino de ciclismo indoor.",
+    image: spin,
     rating: 3.8,
   },
   {
     id: 5,
     title: "Kickboxing",
-    description:
-      "Kickboxing is a martial art that combines punches and kicks.",
-    image: "https://picsum.photos/id/5/200/300",
+    description: "Kickboxing é uma arte marcial que combina socos e pontapés.",
+    image: kickboxing,
     rating: 4.1,
   },
   {
     id: 6,
     title: "Weightlifting",
-    description: "Weightlifting is a sport that involves lifting weights.",
-    image: "https://picsum.photos/id/6/200/300",
+    description: "Halterofilismo é um desporto que envolve levantar pesos.",
+    image: strength,
     rating: 4.1,
   },
   {
     id: 7,
     title: "CrossFit",
-    description: "CrossFit is a high-intensity fitness program.",
-    image: "https://picsum.photos/id/7/200/300",
+    description:
+      "CrossFit é um programa de condicionamento físico de alta intensidade.",
+    image: cardio,
     rating: 4.4,
   },
   {
     id: 8,
     title: "Zumba",
-    description: "Zumba is a dance fitness program.",
-    image: "https://picsum.photos/id/8/200/300",
+    description: "Zumba é um programa de fitness de dança.",
+    image: zumba,
     rating: 4.5,
   },
   {
     id: 9,
     title: "Barre",
-    description: "Barre is a low-impact exercise program.",
-    image: "https://picsum.photos/id/9/200/300",
+    description: "Barre é um programa de exercícios de baixo impacto.",
+    image: bare,
     rating: 4.1,
   },
   {
     id: 10,
     title: "HIIT",
-    description: "HIIT is a high-intensity interval training workout.",
-    image: "https://picsum.photos/id/10/200/300",
+    description: "HIIT é um treino intervalado de alta intensidade.",
+    image: hiit,
     rating: 4.9,
   },
   {
     id: 11,
-    title: "Bootcamp",
-    description: "Bootcamp is a high-intensity group fitness program.",
-    image: "https://picsum.photos/id/11/200/300",
+    title: "Dança",
+    description: "Bootcamp em dança, aulas de salao e contenporaneas.",
+    image: dance,
     rating: 4.6,
   },
   {
     id: 12,
     title: "Swimming",
-    description: "Swimming is a low-impact cardiovascular exercise.",
-    image: "https://picsum.photos/id/12/200/300",
+    description: "A natação é um exercício cardiovascular de baixo impacto.",
+    image: swimming,
     rating: 4.1,
   },
   // ...
 ];
 const Activities = () => {
-
   return (
     <div>
       {activities.map((activity) => (
@@ -103,5 +114,5 @@ const Activities = () => {
     </div>
   );
 };
-export {activities};
+export { activities };
 export default Activities;
