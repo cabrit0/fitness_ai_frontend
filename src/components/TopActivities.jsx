@@ -6,12 +6,15 @@ const TopActivities = () => {
   const sortedActivities = [...activities].sort((a, b) => b.rating - a.rating);
 
   // Get the top 7 activities
-  const topActivities = sortedActivities.slice(0, 7);
+  const topActivities = sortedActivities.slice(0, 6);
 
   return (
-    <div className="relative overflow-hidden rounded-lg no-scrollbar overflow-x-scroll">
+    <div className="relative overflow-hidden pt-5 rounded-lg no-scrollbar overflow-x-scroll">
+      <h1 className="text-3xl font-bold text-center text-gray-600 px-4 py-6">
+        Top Activities
+      </h1>
       <div className="relative px-4 py-6 h-85">
-        <div className="flex ">
+        <div className="flex lg:justify-center">
           {topActivities.map((activity) => (
             <div key={activity.id} className="px-4 mr-4">
               <div className="relative rounded-lg shadow-lg w-48 h-full bg-black-500 opacity-80 bg-gray-800 transition-all duration-300 ease-in-out hover:opacity-100 hover:transform scale-105">
