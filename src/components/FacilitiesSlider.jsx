@@ -36,7 +36,7 @@ const Facilities = () => {
     setCurrentIndex(index);
   };
   return (
-    <div className="relative overflow-hidden py-4 px-12 my-8 mx-6">
+    <div className="relative overflow-hidden py-4 px-12 mt-10 mx-6">
       <div className="text-3xl font-bold text-center text-gray-600 px-4 py-6">
         Instalações
       </div>

@@ -3,7 +3,7 @@ import img from "../assets/descriptionImg.png";
 
 const GymDescriptionBanner = () => {
   return (
-    <div className="bg-gray-800 p-4 rounded-lg lg:mx-20 mt-8 mx-9 flex items-center lg:px-20">
+    <div className="bg-gray-800 p-4 rounded-lg lg:mx-20 mt-14 mx-9 flex items-center lg:px-20">
       <img
         src={img}
         alt="Gym"

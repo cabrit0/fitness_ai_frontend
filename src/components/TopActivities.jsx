@@ -9,7 +9,7 @@ const TopActivities = () => {
   const topActivities = sortedActivities.slice(0, 7);
 
   return (
-    <div className="relative overflow-hidden pt-5 px-5 rounded-lg">
+    <div className="relative overflow-hidden mt-10 pt-5 px-5 rounded-lg">
       <div className="text-3xl font-bold text-center text-gray-600 px-4 py-6">
         Top Actividades
       </div>
