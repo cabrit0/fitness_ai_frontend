@@ -17,7 +17,7 @@ const TopActivities = () => {
         <div className="flex lg:justify-center">
           {topActivities.map((activity) => (
             <div key={activity.id} className="px-4 mr-4">
-              <div className="relative rounded-lg shadow-lg w-48 h-full bg-black-500 opacity-80 bg-gray-800 transition-all duration-300 ease-in-out hover:opacity-100 hover:transform scale-105">
+              <div className="relative rounded-lg shadow-lg w-48 h-full bg-black-500 opacity-80 bg-gray-800 transition-all duration-300 ease-in-out hover:opacity-100 transform hover:-translate-y-0.5 hover:scale-110">
                 <img
                   src={activity.image}
                   alt={activity.title}
