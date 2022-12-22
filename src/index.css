@@ -3,3 +3,22 @@
 @tailwind utilities;
 
 @import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
+
+@layer base {
+  :root {
+    --color-cardBG: 31 41 55;
+    /* ... */
+  }
+}
+
+@layer utilities {
+    /* Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+    }
+}

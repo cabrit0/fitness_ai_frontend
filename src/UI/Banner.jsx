@@ -47,7 +47,7 @@ function Banner() {
           <div className="md:hidden">
             <button
               onClick={toggleMenu}
-              className="font-bold py-2 px-4 hover:text-white text-gray-400 focus:outline-none focus:shadow-outline transition-all duration-300 ease-in-out hover:bg-transparent hover:border-transparent"
+              className="flex items-center justify-center font-bold py-2 px-4 hover:text-white text-gray-400 focus:outline-none focus:shadow-outline transition-all duration-300 ease-in-out hover:bg-transparent hover:border-transparent"
             >
               <HiMenu className="mr-2" />
               Menu
@@ -56,11 +56,11 @@ function Banner() {
         </div>
         <div className="text-gray-300 text-sm mt-4 opacity-75">
           {time.toLocaleDateString()} {time.toLocaleTimeString()}
-        </div>{" "}
+        </div>
         <div
           className={`${
             isMenuOpen ? "block" : "hidden"
-          } md:hidden absolute top-0 right-0 w-${80} h-full bg-gray-800 z-50 transform transition duration-400 ease-in-out`}
+          } md:hidden absolute top-0 right-0 w-80 h-full bg-gray-800 z-50 transform transition duration-1000 ease-in-out`}
         >
           <div className="flex items-center justify-between px-4 py-3 bg-gray-700">
             <h1 className="text-3xl font-bold text-gray-100">Menu</h1>
