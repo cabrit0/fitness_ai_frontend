@@ -15,6 +15,7 @@ function Banner() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   function openLoginModal() {
+    toggleMenu()
     setIsLoginModalOpen(true);
   }
 
@@ -33,7 +34,9 @@ function Banner() {
 
   return (
     <>
-      {isLoginModalOpen && <Login isOpen={isLoginModalOpen} onClose={closeLoginModal} />}
+      {isLoginModalOpen && (
+        <Login isOpen={isLoginModalOpen} onClose={closeLoginModal} backModalButton={closeLoginModal} />
+      )}
       <div className="bg-gray-800 py-4">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between">
@@ -89,7 +92,7 @@ function Banner() {
             </div>
             <div className="py-4">
               <div
-                onClick={toggleMenu}
+                onClick={openLoginModal}
                 className="flex items-center justify-center font-bold py-2 px-4 hover:text-white text-gray-400 focus:outline-none focus:shadow-outline transition-all duration-300 ease-in-out hover:bg-transparent hover:border-transparent"
               >
                 <HiOutlineUserCircle className="mr-2" />

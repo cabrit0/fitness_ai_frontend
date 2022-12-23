@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { FiArrowLeftCircle } from "react-icons/fi";
 import axios from "axios";
 
-const Login = () => {
+const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  // eslint-disable-next-line no-unused-vars
   const [error, setError] = useState("");
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
@@ -108,7 +109,7 @@ const Login = () => {
             </button>
             <button
               className="  text-white font-bold px-5 py-3focus:outline-none focus:shadow-outline"
-              type="submit"
+              onClick={props.backModalButton}
             >
               <FiArrowLeftCircle className="text-gray-500 text-2xl hover:text-gray-700 transition-transform duration-200 transform hover:scale-110" />
             </button>
