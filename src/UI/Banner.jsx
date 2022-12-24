@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import DateAndTime from "../UI/DateAndTime";
 import {
   HiOutlineUserCircle,
   HiOutlinePhone,
@@ -10,7 +11,6 @@ import { HiOutlineBackward } from "react-icons/hi2";
 import Login from "../features/auth/Login";
 
 function Banner() {
-  const [time, setTime] = useState(new Date());
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
@@ -22,11 +22,6 @@ function Banner() {
   function closeLoginModal() {
     setIsLoginModalOpen(false);
   }
-
-  useEffect(() => {
-    const interval = setInterval(() => setTime(new Date()), 1000);
-    return () => clearInterval(interval);
-  }, []);
 
   function toggleMenu() {
     setIsMenuOpen(!isMenuOpen);
@@ -77,7 +72,7 @@ function Banner() {
             </div>
           </div>
           <div className="text-gray-300 text-sm mt-4 opacity-75">
-            {time.toLocaleDateString()} {time.toLocaleTimeString()}
+            <DateAndTime className="text-gray-300" />
           </div>
           <div
             className={`${

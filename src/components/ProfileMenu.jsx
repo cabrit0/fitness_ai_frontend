@@ -6,7 +6,7 @@ import { AiOutlineHome, AiOutlineHeart } from "react-icons/ai";
 
 const Menu = () => {
   return (
-    <div className="text-gray-300 font-bold p-10 flex justify-center">
+    <div className="text-gray-300 font-bold px-10 pt-4 pb-14 flex justify-center">
       <div>
         <button className="btn mr-2 items-center inline-flex   hover:text-white text-gray-300 focus:outline-none focus:shadow-outline transition-all duration-300 ease-in-out hover:bg-transparent hover:border-transparent hover:scale-125">
           <IoMdFitness className="mx-1 text-3xl" />
