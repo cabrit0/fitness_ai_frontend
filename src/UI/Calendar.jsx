@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import moment from "moment";
 
 function Calendar() {
+  // eslint-disable-next-line no-unused-vars
   const [currentDate, setCurrentDate] = useState(moment());
   const [days, setDays] = useState([]);
 
@@ -25,7 +26,7 @@ function Calendar() {
       <h2 className="text-gray-300 text-center text-xl font-bold">
         Esta semana
       </h2>
-      <div className="flex py-4 overflow-x-scroll sm:overflow-x-hidden sm:scrollbar-none">
+      <div className="flex sm:justify-center py-4 overflow-x-scroll sm:overflow-x-hidden sm:scrollbar-none">
         {days.map((day) => (
           <div key={day} className="flex flex-col items-center">
             <div
