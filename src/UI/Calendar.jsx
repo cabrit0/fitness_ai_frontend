@@ -21,16 +21,16 @@ function Calendar() {
   const weekDays = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"];
 
   return (
-    <>
+    <div className="px-10 ">
       <h2 className="text-gray-300 text-center text-xl font-bold">
         Esta semana
       </h2>
-      <div className="flex justify-center px-10 py-4">
+      <div className="flex py-4 overflow-x-scroll sm:overflow-x-hidden sm:scrollbar-none">
         {days.map((day) => (
           <div key={day} className="flex flex-col items-center">
             <div
               className={`text-gray-600 font-bold ${
-                day.isSame(currentDate, "day") ? "text-white" : "text-gray-400"
+                day.isSame(currentDate, "day") ? "text-white" : "text-gray-300"
               }`}
             >
               {weekDays[day.day()]}
@@ -47,7 +47,7 @@ function Calendar() {
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 }
 
