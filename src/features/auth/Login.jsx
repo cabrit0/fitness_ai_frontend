@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FiArrowLeftCircle } from "react-icons/fi";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { loginRequest, loginSuccess } from "./loginSlice";
 
 const Login = (props) => {
-  
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   // eslint-disable-next-line no-unused-vars
@@ -40,6 +42,8 @@ const Login = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    dispatch(loginRequest());
+
     axios
       .post("https://fitness-api.onrender.com/api/v1/auth", {
         email,
@@ -49,6 +53,7 @@ const Login = (props) => {
         // Redirect the user to the home page or display a success message
         navigate("/user");
         console.log(response);
+        dispatch(loginSuccess(response.data));
       })
       .catch((error) => {
         setError(error);
