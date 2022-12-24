@@ -23,7 +23,7 @@ const ProfileBanner = () => {
           </p>
         </div>
         <div className="flex justify-end">
-          <DateAndTime className="text-stone-900 text-base" />
+          <DateAndTime className="text-stone-900 sm:text-base" />
         </div>
       </div>
     </div>
