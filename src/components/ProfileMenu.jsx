@@ -14,7 +14,7 @@ const Menu = () => {
         </button>
         <button className="btn mr-2 items-center inline-flex   hover:text-white text-gray-300 focus:outline-none focus:shadow-outline transition-all duration-300 ease-in-out hover:bg-transparent hover:border-transparent hover:scale-125">
           <GiStrongMan className="mx-1 text-3xl" />
-          <span className="hidden sm:inline">Exercises</span>
+          <span className="hidden sm:inline">Exercícios</span>
         </button>
         <button className="btn mr-2 items-center inline-flex   hover:text-white text-gray-300 focus:outline-none focus:shadow-outline transition-all duration-300 ease-in-out hover:bg-transparent hover:border-transparent hover:scale-125">
           <AiOutlineHome className="mx-1 text-3xl" />
@@ -22,11 +22,11 @@ const Menu = () => {
         </button>
         <button className="btn mr-2 items-center inline-flex   hover:text-white text-gray-300 focus:outline-none focus:shadow-outline transition-all duration-300 ease-in-out hover:bg-transparent hover:border-transparent hover:scale-125">
           <AiOutlineHeart className="mx-1 text-3xl" />
-          <span className="hidden sm:inline">Health</span>
+          <span className="hidden sm:inline">Bem Estar</span>
         </button>
         <button className="btn mr-2 items-center inline-flex   hover:text-white text-gray-300 focus:outline-none focus:shadow-outline transition-all duration-300 ease-in-out hover:bg-transparent hover:border-transparent hover:scale-125">
           <IoPersonOutline className="mx-1 text-3xl" />
-          <span className="hidden sm:inline">Profile</span>
+          <span className="hidden sm:inline">Perfil</span>
         </button>
       </div>
     </div>

@@ -14,6 +14,7 @@ const Login = (props) => {
   const [error, setError] = useState("");
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(true);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -51,18 +52,20 @@ const Login = (props) => {
       })
       .then((response) => {
         // Redirect the user to the home page or display a success message
-        navigate("/user");
         console.log(response);
         dispatch(loginSuccess(response.data));
+        setIsLoginModalOpen(prev => !prev)
+        navigate("/user");
       })
       .catch((error) => {
         setError(error);
-        console.log(error);
+        console.log(error.message);
+        setError('Credenciais inválidas ou user não encontrado')
       });
   };
 
   return (
-    <div className="absolute bg-gray-600 w-full bg-opacity-60 h-screen flex items-center justify-center z-50">
+    <div className={`absolute overflow-y-${isLoginModalOpen} bg-gray-600 w-full bg-opacity-60 h-screen flex items-center justify-center z-50`}>
       <form
         onSubmit={handleSubmit}
         className="bg-white shadow-2xl rounded-lg px-8 pt-6 pb-8 mb-4"
@@ -70,6 +73,7 @@ const Login = (props) => {
         <h2 className="text-gray-600 font-bold text-lg p-3">
           Faz login para entrar na app
         </h2>
+        {error && <p className="text-sm px-2 py-3 opacity-70 text-red-500 font-bold">{error}</p>}
         <label
           htmlFor="email"
           className="block text-gray-700 text-sm font-bold mb-2"
