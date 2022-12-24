@@ -15,7 +15,7 @@ function Banner() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   function openLoginModal() {
-    toggleMenu()
+    toggleMenu();
     setIsLoginModalOpen(true);
   }
 
@@ -35,7 +35,11 @@ function Banner() {
   return (
     <>
       {isLoginModalOpen && (
-        <Login isOpen={isLoginModalOpen} onClose={closeLoginModal} backModalButton={closeLoginModal} />
+        <Login
+          isOpen={isLoginModalOpen}
+          onClose={closeLoginModal}
+          backModalButton={closeLoginModal}
+        />
       )}
       <div className="bg-gray-800 py-4">
         <div className="container mx-auto px-4">

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FiArrowLeftCircle } from "react-icons/fi";
 import axios from "axios";
 
 const Login = (props) => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   // eslint-disable-next-line no-unused-vars
@@ -38,12 +40,18 @@ const Login = (props) => {
     event.preventDefault();
 
     axios
-      .post("/login", { email, password })
+      .post("https://fitness-api.onrender.com/api/v1/auth", {
+        email,
+        password,
+      })
       .then((response) => {
         // Redirect the user to the home page or display a success message
+        navigate("/user");
+        console.log(response);
       })
       .catch((error) => {
-        setError(error.response.data.error);
+        setError(error);
+        console.log(error);
       });
   };
 
@@ -56,6 +64,12 @@ const Login = (props) => {
         <h2 className="text-gray-600 font-bold text-lg p-3">
           Faz login para entrar na app
         </h2>
+        <label
+          htmlFor="email"
+          className="block text-gray-700 text-sm font-bold mb-2"
+        >
+          Email
+        </label>
         <input
           className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
             emailError ? "error" : ""
