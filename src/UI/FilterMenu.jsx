@@ -1,13 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import { IoIosBody } from "react-icons/io";
+import { IoSearch } from "react-icons/io5";
+import { GiBiceps } from "react-icons/gi";
+import { BiDumbbell } from "react-icons/bi";
+import { FaArrowLeft } from "react-icons/fa";
 
-const FilterMenu = ({ exercises, onFilterChange }) => {
+const FilterMenu = ({ exercises, onFilterChange, backButtonHandler }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedBodyPart, setSelectedBodyPart] = useState("");
   const [selectedMuscle, setSelectedMuscle] = useState("");
   const [selectedEquipment, setSelectedEquipment] = useState("");
+  const [isSearchInputVisible, setIsSearchInputVisible] = useState(false);
+  const searchInputRef = useRef(null);
+
+  useEffect(() => {
+    if (isSearchInputVisible) {
+      searchInputRef.current.focus();
+    }
+  }, [isSearchInputVisible]);
+
+  const handleSearchButtonClick = () => {
+    setIsSearchInputVisible(!isSearchInputVisible);
+  };
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
+    if (searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
   };
 
   const handleBodyPartChange = (event) => {
@@ -49,7 +69,7 @@ const FilterMenu = ({ exercises, onFilterChange }) => {
     new Set(exercises.map((exercise) => exercise.bodyPart))
   );
   const muscles = Array.from(
-    new Set(exercises.map((exercise) => exercise.muscle))
+    new Set(exercises.map((exercise) => exercise.target))
   );
   const equipment = Array.from(
     new Set(exercises.map((exercise) => exercise.equipment))
@@ -58,65 +78,96 @@ const FilterMenu = ({ exercises, onFilterChange }) => {
   return (
     <form
       onSubmit={handleFilterSubmit}
-      className="flex items-center justify-between w-full my-3"
+      className="text-center items-center justify-center w-full my-2"
     >
-      <div className="relative rounded-md shadow-sm">
-        <input
-          className="form-input py-2 px-4 block w-full leading-5 rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5"
-          placeholder="Search by name"
-          type="text"
-          value={searchTerm}
-          onChange={handleSearchChange}
-        />
-      </div>
-      <div className="relative rounded-md shadow-sm">
-        <select
-          className="form-input py-2 px-4 block w-full leading-5 rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5"
-          value={selectedBodyPart}
-          onChange={handleBodyPartChange}
-        >
-          <option value="">Filter by body part</option>
-          {bodyParts.map((bodyPart) => (
-            <option key={bodyPart} value={bodyPart}>
-              {bodyPart}
+      <div className="flex md:mx-10 mx-0">
+        {isSearchInputVisible ? (
+          <div className="relative w-full mx-2 rounded-md shadow-sm">
+            <input
+              className="form-input text-center py-2 px-4 block  w-full leading-5 rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+              placeholder="Procura nome"
+              type="text"
+              value={searchTerm}
+              onChange={handleSearchChange}
+              ref={searchInputRef}
+              onBlur={() => setIsSearchInputVisible(false)}
+            />
+          </div>
+        ) : (
+          <button
+            type="button"
+            className="bg-blue-500 opacity-70 text-white text-xl font-bold rounded-2xl block mr-2 px-3 lg:px-10 transition-all duration-300 ease-in-out hover:border-transparent hover:opacity-100 hover:scale-110 w-auto"
+            onClick={handleSearchButtonClick}
+          >
+            <IoSearch className="" />
+          </button>
+        )}
+        <div className="relative w-full mx-0.5 rounded-md shadow-sm">
+          <select
+            className="form-input text-center py-2 px-4 block w-full leading-5 rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+            value={selectedBodyPart}
+            onChange={handleBodyPartChange}
+          >
+            <option value="">
+              <IoIosBody className="w-4 h-4 text-black text-md" />
+              Corpo
             </option>
-          ))}
-        </select>
-      </div>
-      <div className="relative rounded-md shadow-sm">
-        <select
-          className="form-input py-2 px-4 block w-full leading-5 rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5"
-          value={selectedMuscle}
-          onChange={handleMuscleChange}
-        >
-          <option value="">Filter by muscle</option>
-          {muscles.map((target) => (
-            <option key={target} value={target}>
-              {target}
+            {bodyParts.map((bodyPart) => (
+              <option key={bodyPart} value={bodyPart}>
+                {bodyPart}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="relative w-full mx-0.5 rounded-md shadow-sm">
+          <select
+            className="form-input py-2 text-center px-4 block w-full leading-5 rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+            value={selectedMuscle}
+            onChange={handleMuscleChange}
+          >
+            <option value="">
+              <GiBiceps />
+              Músculo
             </option>
-          ))}
-        </select>
-      </div>
-      <div className="relative rounded-md shadow-sm">
-        <select
-          className="form-input py-2 px-4 block w-full leading-5 rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5"
-          value={selectedEquipment}
-          onChange={handleEquipmentChange}
-        >
-          <option value="">Filter by equipment</option>
-          {equipment.map((equipment) => (
-            <option key={equipment} value={equipment}>
-              {equipment}
+            {muscles.map((target) => (
+              <option key={target} value={target}>
+                {target}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="relative w-full mx-0.5 rounded-md shadow-sm">
+          <select
+            className="form-input py-2 text-center px-4 block w-full leading-5 rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+            value={selectedEquipment}
+            onChange={handleEquipmentChange}
+          >
+            <option value="">
+              <BiDumbbell />
+              Equipamento
             </option>
-          ))}
-        </select>
+            {equipment.map((equip) => (
+              <option key={equip} value={equip}>
+                {equip}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
-      <button
-        className="bg-blue-500 opacity-70 text-white font-bold rounded-2xl block w-full p-2 transition-all duration-300 ease-in-out hover:border-transparent hover:opacity-100 hover:scale-110 sm:w-auto"
-        type="submit"
-      >
-        Filter
-      </button>
+      <div className="flex md:mx-10 mt-2">
+        <button
+          className="bg-blue-500 opacity-70 text-white font-bold rounded-2xl block mr-3 p-2 lg:px-10 transition-all duration-300 ease-in-out hover:border-transparent hover:opacity-100 hover:scale-110 w-auto"
+          type="submit"
+        >
+          Filtrar
+        </button>
+        <button
+          className="bg-white text-xl opacity-70 text-blue-500 font-bold rounded-2xl block p-2 px-3 lg:px-10 transition-all duration-300 ease-in-out hover:border-transparent hover:opacity-100 hover:scale-110 w-auto"
+          onClick={backButtonHandler}
+        >
+          <FaArrowLeft />
+        </button>
+      </div>
     </form>
   );
 };

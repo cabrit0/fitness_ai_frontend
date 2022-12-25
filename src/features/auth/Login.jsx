@@ -106,7 +106,7 @@ const Login = (props) => {
         />
         {emailError && (
           <p className="text-red-500 text-xs italic animate-bounce">
-            Please enter a valid email address
+            Por favor insira um email válido
           </p>
         )}
 
@@ -130,7 +130,7 @@ const Login = (props) => {
           />
           {passwordError && (
             <p className="text-red-500 text-xs italic animate-bounce">
-              Password must be at least 8 characters
+              Password tem que ter pelo menos 8 caracteres
             </p>
           )}
         </div>
