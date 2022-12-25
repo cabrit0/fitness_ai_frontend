@@ -15,9 +15,9 @@ const ExerciseCard = ({ exercise }) => (
           Equipment: {exercise.equipment}
         </p>
       </div>
-      <div className="px-6 pt-4 text-white opacity-70  focus:outline-none focus:shadow-outline transition-all duration-300 ease-in-out hover:border-transparent hover:opacity-100">
+      <div className="px-6 md:px-2 pt-4 text-white opacity-70 focus:outline-none focus:shadow-outline transition-all duration-300 ease-in-out hover:border-transparent hover:opacity-100">
         <button className="bg-blue-500 mb-1 p-3 items-end rounded-t-2xl rounded-b-md block h-full w-full transition-all duration-300 ease-in-out hover:scale-125 overflow-hidden">
-          Start exercise
+          Começar exercicío
         </button>
       </div>
     </div>
