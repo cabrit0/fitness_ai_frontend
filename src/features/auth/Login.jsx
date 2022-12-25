@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FiArrowLeftCircle } from "react-icons/fi";
 import axios from "axios";
-import { useDispatch } from "react-redux";
-import { loginRequest, loginSuccess } from "./loginSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { loginRequest, loginSuccess, loginError } from "./loginSlice";
+import Loading from "../../UI/Loading";
 
 const Login = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const loading = useSelector( state => state.login.loading)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   // eslint-disable-next-line no-unused-vars
@@ -44,7 +46,9 @@ const Login = (props) => {
     event.preventDefault();
 
     dispatch(loginRequest());
-
+    //loginRequest.loading = false;
+    console.log(loading)
+    
     axios
       .post("https://fitness-api.onrender.com/api/v1/auth", {
         email,
@@ -52,20 +56,23 @@ const Login = (props) => {
       })
       .then((response) => {
         // Redirect the user to the home page or display a success message
-        console.log(response);
+        //console.log(response);
         dispatch(loginSuccess(response.data));
         setIsLoginModalOpen(prev => !prev)
         navigate("/user");
       })
       .catch((error) => {
         setError(error);
-        console.log(error.message);
+        //console.log(error.message);
         setError('Credenciais inválidas ou user não encontrado')
+        dispatch(loginError(error.message))
       });
   };
 
   return (
-    <div className={`absolute overflow-y-${isLoginModalOpen} bg-gray-600 w-full bg-opacity-60 h-screen flex items-center justify-center z-50`}>
+    <div
+      className={`absolute overflow-y-${isLoginModalOpen} bg-gray-600 w-full bg-opacity-60 h-screen flex items-center justify-center z-50`}
+    >
       <form
         onSubmit={handleSubmit}
         className="bg-white shadow-2xl rounded-lg px-8 pt-6 pb-8 mb-4"
@@ -73,7 +80,12 @@ const Login = (props) => {
         <h2 className="text-gray-600 font-bold text-lg p-3">
           Faz login para entrar na app
         </h2>
-        {error && <p className="text-sm px-2 py-3 opacity-70 text-red-500 font-bold">{error}</p>}
+        {error && (
+          <p className="text-sm px-2 py-3 opacity-70 text-red-500 font-bold">
+            {error}
+          </p>
+        )}
+
         <label
           htmlFor="email"
           className="block text-gray-700 text-sm font-bold mb-2"
@@ -81,7 +93,7 @@ const Login = (props) => {
           Email
         </label>
         <input
-          className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+          className={`shadow appearance-none border rounded w-full mb-2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
             emailError ? "error" : ""
           }`}
           id="email"
@@ -125,12 +137,17 @@ const Login = (props) => {
 
         <div className="flex items-center justify-between">
           <div className="flex justify-center">
-            <button
-              className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-3xl focus:outline-none focus:shadow-outline transition-transform duration-200 transform hover:scale-110"
-              type="submit"
-            >
-              Login
-            </button>
+            {!loading ? (
+              <button
+                className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-3xl focus:outline-none focus:shadow-outline transition-transform duration-200 transform hover:scale-110"
+                type="submit"
+                //disabled={loading || emailError || passwordError}
+              >
+                Login
+              </button>
+            ) : (
+              <Loading/>
+            )}
             <button
               className="  text-white font-bold px-5 py-3focus:outline-none focus:shadow-outline"
               onClick={props.backModalButton}
