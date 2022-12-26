@@ -7,11 +7,9 @@ import store from "./app/store";
 import HomePage from "./pages/HomePage";
 import UserProfilePage from "./pages/UserProfilePage";
 import WorkoutsPage from "./pages/WorkoutsPage";
-/* import UserPage from "./features/users";
-import ExercisePage from "./features/exercises";
-import ActivityPage from "./features/activities";
-import Navigation from "./layouts/navigation";
-import Footer from "./layouts/footer";*/
+import ExercisesPage from "./pages/ExercisesPage";
+import WellbeingPage from "./pages/WellbeingPage";
+import UserSettings from "./pages/UserSettingsPage";
 
 function App() {
   return (
@@ -21,6 +19,10 @@ function App() {
           <Route exact path="/" element={<HomePage />} />
           <Route path="/user" element={<UserProfilePage />}>
             <Route path="/user/workouts" element={<WorkoutsPage />}></Route>
+            <Route path="/user/exercises" element={<ExercisesPage />}></Route>
+            <Route path="/user/home" element={<UserProfilePage />}></Route>
+            <Route path="/user/wellbeing" element={<WellbeingPage />}></Route>
+            <Route path="/user/settings" element={<UserSettings />}></Route>
           </Route>
         </Routes>
       </Router>
@@ -29,20 +31,3 @@ function App() {
 }
 
 export default App;
-
-{
-  /* <Provider store={store}>
-  <Router>
-    <Navigation />
-    <Routes>
-      <Route exact path="/" component={HomePage} />
-      <Route path="/users" component={UserPage} />
-          <Route path="/exercises" component={ExercisePage} />
-          <Route path="/activities" component={ActivityPage} />
-          <Route path="/workouts" component={WorkoutPage} />
-          <Route path="/auth" component={AuthPage} />
-    </Routes>
-    <Footer />
-  </Router>
-</Provider>; */
-}

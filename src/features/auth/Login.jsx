@@ -4,6 +4,7 @@ import { FiArrowLeftCircle } from "react-icons/fi";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { loginRequest, loginSuccess, loginError } from "./loginSlice";
+import { setCurrentPage } from "../../pages/pagesSlice";
 import Loading from "../../UI/Loading";
 
 const Login = (props) => {
@@ -59,6 +60,7 @@ const Login = (props) => {
         //console.log(response);
         dispatch(loginSuccess(response.data));
         setIsLoginModalOpen(prev => !prev)
+        dispatch(setCurrentPage("home"));
         navigate("/user");
       })
       .catch((error) => {

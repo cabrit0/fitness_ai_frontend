@@ -2,7 +2,7 @@ import React from "react";
 import ProfileBanner from "../UI/ProfileBanner";
 import ProfileMenu from "../components/ProfileMenu";
 
-const WorkoutsPage = () => {
+const WellbeingPage = () => {
   return (
     <div className="bg-mesh w-screen flex flex-col h-screen overflow-hidden">
       <ProfileBanner />
@@ -12,4 +12,4 @@ const WorkoutsPage = () => {
   );
 };
 
-export default WorkoutsPage;
+export default WellbeingPage;
