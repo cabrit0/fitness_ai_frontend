@@ -6,11 +6,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import store from "./app/store";
 import HomePage from "./pages/HomePage";
 import UserProfilePage from "./pages/UserProfilePage";
+import WorkoutsPage from "./pages/WorkoutsPage";
 /* import UserPage from "./features/users";
 import ExercisePage from "./features/exercises";
 import ActivityPage from "./features/activities";
-import WorkoutPage from "./features/workouts";
-import AuthPage from "./features/auth"; 
 import Navigation from "./layouts/navigation";
 import Footer from "./layouts/footer";*/
 
@@ -20,7 +19,9 @@ function App() {
       <Router>
         <Routes>
           <Route exact path="/" element={<HomePage />} />
-          <Route path="/user" element={<UserProfilePage />} />
+          <Route path="/user" element={<UserProfilePage />}>
+            <Route path="/user/workouts" element={<WorkoutsPage />}></Route>
+          </Route>
         </Routes>
       </Router>
     </Provider>

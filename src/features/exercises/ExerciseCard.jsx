@@ -1,14 +1,14 @@
 
 const ExerciseCard = ({ exercise }) => {
   return (
-    <div className="w-full sm:w-1/3 px-2 p-4 sm:mx-auto">
+    <div className="w-full sm:w-1/3 px-2 py-4 sm:mx-auto">
       <div className="bg-white text-gray-700 opacity-70 focus:outline-none focus:shadow-outline transition-all duration-300 ease-in-out hover:border-transparent hover:scale-105 hover:opacity-100 rounded-lg shadow-lg overflow-hidden">
         <img
           src={exercise.gifUrl}
           alt={exercise.name}
           className="w-20 h-w-20 mx-auto pt-4 object-cover"
         />
-        <div className="px-6 py-4">
+        <div className="px-6 py-4 h-full">
           <h2 className="text-xl font-bold text-gray-900 leading-tight">
             {exercise.name}
           </h2>
