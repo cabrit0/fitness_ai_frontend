@@ -17,13 +17,11 @@ function App() {
       <Router>
         <Routes>
           <Route exact path="/" element={<HomePage />} />
-          <Route path="/user" element={<UserProfilePage />}>
-            <Route path="/user/workouts" element={<WorkoutsPage />}></Route>
-            <Route path="/user/exercises" element={<ExercisesPage />}></Route>
-            <Route path="/user/home" element={<UserProfilePage />}></Route>
-            <Route path="/user/wellbeing" element={<WellbeingPage />}></Route>
-            <Route path="/user/settings" element={<UserSettings />}></Route>
-          </Route>
+          <Route path="/user" element={<UserProfilePage />} />
+          <Route path="/user/workouts" element={<WorkoutsPage />} />
+          <Route path="/user/exercises" element={<ExercisesPage />} />
+          <Route path="/user/wellbeing" element={<WellbeingPage />} />
+          <Route path="/user/settings" element={<UserSettings />} />
         </Routes>
       </Router>
     </Provider>

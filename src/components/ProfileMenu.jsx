@@ -25,7 +25,7 @@ const Menu = () => {
 
   const handleHomeClick = () => {
     dispatch(setCurrentPage("home"));
-    navigate("/user/home");
+    navigate("/user");
   };
 
   const handleWellbeingClick = () => {
