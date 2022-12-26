@@ -10,7 +10,7 @@ import Loading from "../../UI/Loading";
 const Login = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const loading = useSelector( state => state.login.loading)
+  const loading = useSelector((state) => state.login.loading);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   // eslint-disable-next-line no-unused-vars
@@ -48,8 +48,8 @@ const Login = (props) => {
 
     dispatch(loginRequest());
     //loginRequest.loading = false;
-    console.log(loading)
-    
+    console.log(loading);
+
     axios
       .post("https://fitness-api.onrender.com/api/v1/auth", {
         email,
@@ -59,15 +59,15 @@ const Login = (props) => {
         // Redirect the user to the home page or display a success message
         //console.log(response);
         dispatch(loginSuccess(response.data));
-        setIsLoginModalOpen(prev => !prev)
+        setIsLoginModalOpen((prev) => !prev);
         dispatch(setCurrentPage("home"));
         navigate("/user");
       })
       .catch((error) => {
         setError(error);
         //console.log(error.message);
-        setError('Credenciais inválidas ou user não encontrado')
-        dispatch(loginError(error.message))
+        setError("Credenciais inválidas ou user não encontrado");
+        dispatch(loginError(error.message));
       });
   };
 
@@ -148,7 +148,7 @@ const Login = (props) => {
                 Login
               </button>
             ) : (
-              <Loading/>
+              <Loading />
             )}
             <button
               className="  text-white font-bold px-5 py-3focus:outline-none focus:shadow-outline"
