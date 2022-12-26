@@ -90,7 +90,7 @@ const ProfileExercises = () => {
                   Nenhum resultado encontrado...
                 </div>
               ) : filteredExercises ? (
-                exercises.map((exercise) => (
+                filteredExercises.map((exercise) => (
                   <ExerciseCard key={exercise.id} exercise={exercise} />
                 ))
               ) : (
