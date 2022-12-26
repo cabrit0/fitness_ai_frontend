@@ -1,4 +1,3 @@
-
 const ExerciseCard = ({ exercise }) => {
   return (
     <div className="w-full sm:w-1/3 px-2 py-4 sm:mx-auto">
@@ -13,8 +12,8 @@ const ExerciseCard = ({ exercise }) => {
             {exercise.name}
           </h2>
           <p className="text-gray-600 text-sm">
-            Target: {exercise.target} | Body part: {exercise.bodyPart} |
-            Equipment: {exercise.equipment}
+            Músculo: {exercise.target} | Parte do corpo: {exercise.bodyPart} |
+            Equipamento: {exercise.equipment}
           </p>
         </div>
         <div className="px-6 md:px-2 pt-4 text-white opacity-70 focus:outline-none focus:shadow-outline transition-all duration-300 ease-in-out hover:border-transparent hover:opacity-100">

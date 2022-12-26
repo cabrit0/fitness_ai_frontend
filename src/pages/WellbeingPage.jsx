@@ -9,6 +9,11 @@ const WellbeingPage = () => {
       <ProfileBanner />
       <div className="overflow-hidden overflow-y-scroll flex-grow">
         <Calendar />
+        <div className="my-8">
+          <h1 className="text-white text-center font-bold">
+            Meu Bem Estar, a ser construido...
+          </h1>
+        </div>
       </div>
       <ProfileMenu className="" />
     </div>
