@@ -42,6 +42,7 @@ const ProfileExercises = () => {
   const handleBackButton = () => {
     setIsAllExercises(false);
     setFilteredExercises(null);
+    setIsNoResultsFound(false);
     dispatch(fetchExercises());
   };
 
