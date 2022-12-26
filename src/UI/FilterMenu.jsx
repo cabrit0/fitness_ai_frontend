@@ -158,6 +158,7 @@ const FilterMenu = ({ exercises, onFilterChange, backButtonHandler }) => {
         <button
           className="bg-blue-500 opacity-70 text-white font-bold rounded-2xl block mr-3 p-2 lg:px-10 transition-all duration-300 ease-in-out hover:border-transparent hover:opacity-100 hover:scale-110 w-auto"
           type="submit"
+          onClick={handleFilterSubmit}
         >
           Filtrar
         </button>

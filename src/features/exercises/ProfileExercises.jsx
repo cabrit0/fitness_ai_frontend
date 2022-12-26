@@ -16,8 +16,9 @@ const ProfileExercises = () => {
   const exercises = useSelector(selectRandomExercises);
   const isLoading = useSelector(selectIsLoading);
 
-  const [filteredExercises, setFilteredExercises] = useState();
+  const [filteredExercises, setFilteredExercises] = useState(null);
   const [isAllExercises, setIsAllExercises] = useState(false);
+  const [isNoResultsFound, setIsNoResultsFound] = useState(false);
 
   const handleViewAllExercises = () => {
     setIsAllExercises(true);
@@ -29,6 +30,12 @@ const ProfileExercises = () => {
   };
 
   const handleFilterChange = (filteredExercises) => {
+    if (filteredExercises.length === 0) {
+      setIsNoResultsFound(true);
+    } else {
+      setIsNoResultsFound(false);
+    }
+
     setFilteredExercises(filteredExercises);
   };
 
@@ -42,7 +49,7 @@ const ProfileExercises = () => {
     dispatch(fetchExercises());
   }, [dispatch]);
 
-  console.log(isLoading);
+  console.log(filteredExercises, isNoResultsFound);
 
   return (
     <div>
@@ -59,13 +66,24 @@ const ProfileExercises = () => {
                 backButtonHandler={handleBackButton}
               />
             )}
-            {exercises.map((exercise) => (
-              <ExerciseCard key={exercise.id} exercise={exercise} />
-            ))}
+            {isNoResultsFound && filteredExercises !== null ? (
+              <div className="text-center text-white opacity-75 w-full text-4xl mb-4 mt-12">
+                Nenhum resultado encontrado...
+              </div>
+            ) : filteredExercises ? (
+              filteredExercises.map((exercise) => (
+                <ExerciseCard key={exercise.id} exercise={exercise} />
+              ))
+            ) : (
+              exercises.map((exercise) => (
+                <ExerciseCard key={exercise.id} exercise={exercise} />
+              ))
+            )}
             <button
               className="bg-blue-500 my-3 hover:bg-blue-700 text-
-white font-bold py-2 px-4 rounded-full w-80"
+  white font-bold py-2 px-4 rounded-full w-80 disabled:opacity-40"
               onClick={handleViewAllExercises}
+              disabled={isNoResultsFound}
             >
               Todos os exercícios
             </button>
