@@ -7,7 +7,7 @@ export const fetchExercises = createAsyncThunk(
     const response = await axios.get(
       "https://fitness-api.onrender.com/api/v1/exercises/allExercises"
     );
-    const randomExercises = getRandomExercises(response.data, 6);
+    const randomExercises = getRandomExercises(response.data, 3);
     thunkAPI.dispatch(setRandomExercises(randomExercises));
     return response.data;
   }

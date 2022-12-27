@@ -7,32 +7,46 @@ const workoutsSlice = createSlice({
     currentWorkout: null,
   },
   reducers: {
-    addWorkout: (state, action) => {
+    // adds a new workout to the list of workouts
+    createWorkout: (state, action) => {
       const { workout } = action.payload;
       state.workouts.push(workout);
     },
-    setCurrentWorkout: (state, action) => {
+    // sets the current workout
+    setWorkout: (state, action) => {
       const { workout } = action.payload;
       state.currentWorkout = workout;
     },
-    updateCurrentWorkout: (state, action) => {
+    //updates the current workout with new information
+    updateWorkout: (state, action) => {
       const { workout } = action.payload;
       state.currentWorkout = { ...state.currentWorkout, ...workout };
     },
-    clearCurrentWorkout: (state) => {
-      state.currentWorkout = null;
+    // retrieves all workouts
+    seeAllWorkouts: (state) => {
+      return state.workouts;
+    },
+    // deletes the current workout
+    deleteWorkout: (state, action) => {
+      const { workoutId } = action.payload;
+      state.workouts = state.workouts.filter(
+        (workout) => workout.id !== workoutId
+      );
     },
   },
 });
-//
+
 export const {
-  addWorkout,
-  setCurrentWorkout,
-  updateCurrentWorkout,
-  clearCurrentWorkout,
+  createWorkout,
+  setWorkout,
+  updateWorkout,
+  seeAllWorkouts,
+  deleteWorkout,
 } = workoutsSlice.actions;
 
+// which returns the list of workouts
 export const selectWorkouts = (state) => state.workouts.workouts;
+// returns the current workout
 export const selectCurrentWorkout = (state) => state.workouts.currentWorkout;
 
 export default workoutsSlice.reducer;

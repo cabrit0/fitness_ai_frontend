@@ -71,7 +71,7 @@ const ProfileExercises = () => {
           className="text-gray-300 text-center text-xl font-bold pt-8"
           ref={exerciseContainerRef}
         >
-          Top 6 Exercícios
+          Top Exercícios
         </h2>
       )}
       <div className="no-scrollbar">
