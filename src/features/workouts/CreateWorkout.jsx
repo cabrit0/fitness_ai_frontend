@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createWorkout } from "./workoutsSlice";
+import { createWorkout } from "./WorkoutsSlice";
 import { selectExercises } from "../exercises/exercisesSlice";
 
 const CreateWorkout = () => {
@@ -70,4 +70,3 @@ const CreateWorkout = () => {
 };
 
 export default CreateWorkout;
-

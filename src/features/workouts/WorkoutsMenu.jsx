@@ -16,7 +16,7 @@ const WorkoutsMenu = () => {
     <div>
       <div className="flex text-sm md:text-md mx-auto md:mx-36 my-6">
         <button
-          className="w-full mx-0.5 mx-2 flex items-center justify-center bg-gray-200 text-gray-700 opacity-70 transition-all duration-300 ease-in-out focus:outline-none focus:shadow-outline hover:text-gray-200 hover:opacity-100 hover:bg-green-700 font-bold py-1 px-2 my-auto rounded-xl"
+          className="w-full mx-2 flex items-center justify-center bg-gray-200 text-gray-700 opacity-70 transition-all duration-300 ease-in-out focus:outline-none focus:shadow-outline hover:text-gray-200 hover:opacity-100 hover:bg-green-700 font-bold py-1 px-2 my-auto rounded-xl"
           onClick={() => setSelectedAction("create")}
         >
           <TbClipboardPlus className="base-block sm:hidden mr-2" />
