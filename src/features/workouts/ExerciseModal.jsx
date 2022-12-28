@@ -32,33 +32,14 @@ const ExerciseModal = ({ toggleModal, addExercise }) => {
             onChange={(event) => setSelectedExercise(event.target.value)}
           >
             <option value="">---</option>
-            {randomExercises.map((exercise) => (
+            {exercises.map((exercise) => (
               <option key={exercise.id} value={exercise.id}>
                 {exercise.name}
               </option>
             ))}
-            <option value="viewAll">Ver todos</option>
+            {/* <option value="viewAll">Ver todos</option> */}
           </select>
-          <div className="mt-4">
-            {selectedExercise === "viewAll" ? (
-              <div className="relative rounded-md shadow-sm">
-                <select
-                  className="block appearance-none w-full bg-gray-200 border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
-                  value={selectedExercise}
-                  onChange={(event) => setSelectedExercise(event.target.value)}
-                >
-                  <option value="">---</option>
-                  {exercises.map((exercise) => (
-                    <option key={exercise.id} value={exercise.id}>
-                      {exercise.name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            ) : (
-              <div></div>
-            )}
-          </div>
+
           <label className="block  text-gray-200 text-sm font-bold mt-4 mb-2">
             Number of reps:
           </label>

@@ -12,25 +12,52 @@ const CreateWorkout = () => {
   const [description, setDescription] = useState("");
   const [exercises, setExercises] = useState([]);
   const [reps, setReps] = useState([]);
+  const id = useSelector((state) => state.login.user.foundUser._id);
+  const userAccessToken = useSelector((state) => state.login.user.accessToken);
+
+  //console.log(userId, userAccessToken)
 
   const addExercise = (id) => {
     // Find the exercise with the given id in the exercisesFromServer array
     const exercise = exercisesFromServer.find((exercise) => exercise.id === id);
     console.log(exercise);
+
     // Update the state of the exercises arrays
     setExercises([...exercises, exercise]);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
     dispatch(
-      createWorkout({ workout: { name, description, exercises, reps } })
+      createWorkout({ workout: { id, name, description, exercises, reps } })
     );
 
+    const data = {
+      id,
+      name,
+      description,
+      exercises: exercises.map((exercise) => {
+        return {
+          name: exercise.name,
+          bodyPart: exercise.bodyPart,
+          target: exercise.target,
+          equipment: exercise.equipment,
+          animatedGif: exercise.gifUrl,
+        };
+      }),
+      reps,
+    };
     axios
-      .post("https://fitness-api.onrender.com/api/v1/user/workouts&exercises", {
-        workout: { name, description, exercises, reps },
-      })
+      .post(
+        "https://fitness-api.onrender.com/api/v1/user/workouts&exercises",
+        data,
+        {
+          headers: {
+            Authorization: "Bearer " + userAccessToken,
+          },
+        }
+      )
       .then((response) => {
         // do something with the response here, like dispatch an action to update the state
         console.log(response);
@@ -80,9 +107,7 @@ const CreateWorkout = () => {
             Acidiciona Exercícios
           </button>
           {exercises.map((exercise) => (
-            <div className="">
-              <ExercisesCardWorkouts key={exercise.id} exercise={exercise} />
-            </div>
+            <ExercisesCardWorkouts key={exercise.id} exercise={exercise} />
           ))}
           <label className="block text-gray-200  font-bold text-xl mb-2 mt-4">
             Repeticoes:
