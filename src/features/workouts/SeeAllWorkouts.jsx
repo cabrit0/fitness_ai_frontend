@@ -10,7 +10,7 @@ const SeeAllWorkouts = () => {
   const id = useSelector((state) => state.login.user.foundUser._id);
   console.log(id, userAccessToken);
 
-  const data = { id: id };
+  const idServer = {id}; // testar isto!! esta merda nao esta a renderizar! erro de servidor, User not found
 
   const serverWorkouts = () => {
     axios
@@ -18,7 +18,7 @@ const SeeAllWorkouts = () => {
         headers: {
           Authorization: "Bearer " + userAccessToken,
         },
-        data,
+        params: idServer,
       })
       .then((response) => {
         // do something with the response here, like dispatch an action to update the state
