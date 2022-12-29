@@ -1,28 +1,29 @@
 import React from "react";
 import axios from "axios";
-import { useSelector } from "react-redux";
-import { selectWorkouts, selectCurrentWorkout } from "./WorkoutsSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { selectWorkouts, seeAllWorkouts } from "./WorkoutsSlice";
 
 const SeeAllWorkouts = () => {
+  const dispatch = useDispatch();
   const workouts = useSelector(selectWorkouts);
   const userAccessToken = useSelector((state) => state.login.user.accessToken);
-  const id = useSelector((state) => state.workouts.currentWorkout)
+  const id = useSelector((state) => state.login.user.foundUser._id);
+  console.log(id, userAccessToken);
+
+  const data = { id: id };
 
   const serverWorkouts = () => {
-
-    const data = {id: id}
     axios
-      .get(
-        "https://fitness-api.onrender.com/api/v1/user/workouts&exercises", data,
-        {
-          headers: {
-            Authorization: "Bearer " + userAccessToken,
-          },
-        }
-      )
+      .get("https://fitness-api.onrender.com/api/v1/user/workouts&exercises", {
+        headers: {
+          Authorization: "Bearer " + userAccessToken,
+        },
+        data,
+      })
       .then((response) => {
         // do something with the response here, like dispatch an action to update the state
         console.log(response);
+        dispatch(seeAllWorkouts(response.data));
       })
       .catch((error) => {
         // handle the error here
@@ -30,7 +31,7 @@ const SeeAllWorkouts = () => {
       });
   };
 
-  serverWorkouts()
+  serverWorkouts();
   return (
     <div className="px-4 pt-3 w-full">
       {workouts.length === 0 ? (
@@ -73,18 +74,3 @@ const SeeAllWorkouts = () => {
 };
 
 export default SeeAllWorkouts;
-
-{
-  /* <ul>
-  {workout.exercises.map((exercise, index) => (
-    <li key={exercise.id}>
-      {exercise.name} :{" "}
-      <img
-        src={exercise.gifUrl}
-        alt={exercise.name}
-        className="w-20 h-20 m-auto object-cover"
-      />
-    </li>
-  ))}
-</ul>; */
-}
