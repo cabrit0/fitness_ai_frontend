@@ -26,7 +26,7 @@ function Calendar() {
       <h2 className="text-gray-300 text-center text-xl font-bold">
         Esta semana
       </h2>
-      <div className="flex sm:justify-center py-4 overflow-x-scroll sm:overflow-x-hidden sm:scrollbar-none">
+      <div className="flex sm:justify-center py-4 overflow-x-scroll sm:overflow-x-hidden sm:scrollbar-none no-scrollbar">
         {days.map((day) => (
           <div key={day} className="flex flex-col items-center">
             <div
