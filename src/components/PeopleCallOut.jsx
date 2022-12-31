@@ -19,8 +19,7 @@ const PeopleCallOut = () => {
         com todo o carinho e profissionalismo que só nós podemos oferecer!
       </p>
       <button
-        className="bg-gray-600 text-md mt-8 py-3 px-8 font-bold shadow-lg rounded-full text-white mr-4 transition-transform duration-200 hover:bg-gray-500 transform hover:-
-translate-y-0.5 hover:scale-110"
+        className="bg-gray-600 text-md mt-8 py-3 px-8 font-bold shadow-lg rounded-full text-white mr-4 "
       >
         Agende sua visita
       </button>

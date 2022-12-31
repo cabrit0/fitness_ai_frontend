@@ -5,33 +5,45 @@ const workoutsSlice = createSlice({
   initialState: {
     workouts: [],
     currentWorkout: null,
+    isLoading: false,
   },
   reducers: {
     // adds a new workout to the list of workouts
     createWorkout: (state, action) => {
+      state.isLoading = true;
       const { workout } = action.payload;
       state.workouts.push(workout);
+      state.isLoading = false;
     },
     // sets the current workout
     setWorkout: (state, action) => {
+      state.isLoading = true;
       const { workout } = action.payload;
       state.currentWorkout = workout;
+      state.isLoading = false;
     },
     //updates the current workout with new information
     updateWorkout: (state, action) => {
+      state.isLoading = true;
       const { workout } = action.payload;
       state.currentWorkout = { ...state.currentWorkout, ...workout };
+      state.isLoading = false;
     },
     // retrieves all workouts
-    seeAllWorkouts: (state) => {
-      return state.workouts;
+    seeAllWorkouts: (state, action) => {
+      state.isLoading = true;
+      const { workouts } = action.payload;
+      state.workouts = workouts;
+      state.isLoading = false;
     },
     // deletes the current workout
     deleteWorkout: (state, action) => {
+      state.isLoading = true;
       const { workoutId } = action.payload;
       state.workouts = state.workouts.filter(
         (workout) => workout.id !== workoutId
       );
+      state.isLoading = false;
     },
   },
 });
