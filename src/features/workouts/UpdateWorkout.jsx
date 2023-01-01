@@ -39,7 +39,7 @@ const UpdateWorkout = () => {
   };
 
   return (
-    <div className="px-10 pt-3 w-full">
+    <div className=" w-full">
       {modalIsOpen ? (
         <ModalWorkoutUpdate
           workout={currentWorkout}
