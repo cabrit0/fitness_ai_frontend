@@ -3,7 +3,7 @@ import ProfileMenu from "../components/ProfileMenu";
 import ProfileBanner from "../UI/ProfileBanner";
 import Calendar from "../UI/Calendar";
 import ProfileExercises from "../features/exercises/ProfileExercises";
-import ExercisePieChart from "../components/EquipmentPieGraph";
+import ChartLayout from "../layouts/ChartLayout";
 
 const UserProfilePage = () => {
   return (
@@ -11,8 +11,8 @@ const UserProfilePage = () => {
       <ProfileBanner />
       <div className="overflow-hidden overflow-y-scroll flex-grow no-scrollbar">
         <Calendar />
+        <ChartLayout />
         <ProfileExercises />
-        <ExercisePieChart/>
       </div>
       <ProfileMenu className="" />
     </div>
