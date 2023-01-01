@@ -4,7 +4,7 @@ const ExerciseCard = ({ exercise }) => {
       <div className="bg-white w-80 h-30 text-gray-700 opacity-70 flex justify-center items-center focus:outline-none focus:shadow-outline transition-all duration-300 ease-in-out hover:border-transparent hover:scale-105 hover:opacity-100 rounded-lg shadow-lg overflow-hidden">
         <div className="w-50">
           <img
-            src={exercise.gifUrl}
+            src={exercise.animatedGif}
             alt={exercise.name}
             className="w-20 h-20 m-auto object-cover"
           />

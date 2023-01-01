@@ -2,14 +2,12 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteWorkout } from "./WorkoutsSlice";
-import Loading from "../../UI/Loading";
 
 const DeleteWorkout = () => {
   const workouts = useSelector((state) => state.workouts.workouts);
   const dispatch = useDispatch();
   const userAccessToken = useSelector((state) => state.login.user.accessToken);
   const id = useSelector((state) => state.login.user.foundUser._id);
-  const isLoading = useSelector((state) => state.workouts.isLoading);
   const [message, setMessage] = useState("");
   const [isDeleted, setIsDeleted] = useState(false);
 

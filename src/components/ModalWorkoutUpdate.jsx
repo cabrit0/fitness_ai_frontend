@@ -1,26 +1,33 @@
-import React, { useState } from "react";
-import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
-import { createWorkout } from "./WorkoutsSlice";
-import { selectExercises } from "../exercises/exercisesSlice";
-import ExerciseModal from "./ExerciseModal";
-import ExercisesCardWorkouts from "../exercises/ExercisesCardWorkouts";
+import React, { useState, useEffect } from "react";
+import ExercisesCardWorkouts from "../features/exercises/ExercisesCardWorkouts";
+import ExerciseModal from "../features/workouts/ExerciseModal";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  updateWorkout,
+  selectWorkouts,
+} from "../features/workouts/WorkoutsSlice";
+import { selectExercises } from "../features/exercises/exercisesSlice";
 
-const CreateWorkout = () => {
+const ModalWorkoutUpdate = ({
+  workout,
+  name,
+  setName,
+  description,
+  setDescription,
+  exercises,
+  setExercises,
+  reps,
+  setReps,
+  message,
+  setMessage,
+  isUpdated,
+  handleUpdate,
+  exitModal,
+}) => {
   const dispatch = useDispatch();
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [exercises, setExercises] = useState([]);
-  const [reps, setReps] = useState([]);
-  const id = useSelector((state) => state.login.user.foundUser._id);
-  const userAccessToken = useSelector((state) => state.login.user.accessToken);
-  const isLoading = useSelector((state) => state.workouts.isLoading);
-  const [message, setMessage] = useState("");
-  const [isCreated, setIsCreated] = useState(false);
+  const workouts = useSelector(selectWorkouts);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const exercisesFromServer = useSelector(selectExercises);
-
-  //console.log(userId, userAccessToken)
 
   const addExercise = (id) => {
     // Find the exercise with the given id in the exercisesFromServer array
@@ -31,69 +38,34 @@ const CreateWorkout = () => {
     setExercises([...exercises, exercise]);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  // Set the initial state of the input fields with the values from the current workout object
+  useEffect(() => {
+    setName(workout.name);
+    setDescription(workout.description);
+    setExercises(workout.exercises);
+    setReps(workout.reps);
+  }, [workout]);
 
-    const data = {
-      id,
-      name,
-      description,
-      exercises: exercises.map((exercise) => {
-        return {
-          name: exercise.name,
-          bodyPart: exercise.bodyPart,
-          target: exercise.target,
-          equipment: exercise.equipment,
-          animatedGif: exercise.gifUrl,
-        };
-      }),
-      reps,
-    };
-    axios
-      .post(
-        "https://fitness-api.onrender.com/api/v1/user/workouts&exercises",
-        data,
-        {
-          headers: {
-            Authorization: "Bearer " + userAccessToken,
-          },
-        }
-      )
-      .then((response) => {
-        // do something with the response here, like dispatch an action to update the state
-        dispatch(
-          createWorkout({
-            workout: { id, name, description, exercises, reps },
-          })
-        );
-        console.log(response);
-        setMessage("Workout Criado com sucesso!");
-        setIsCreated(true);
-      })
-      .catch((error) => {
-        // handle the error here
-        console.log(error);
-      });
-  };
-
-
-  const toggleModal = () => {
+  const toggleModalExercises = () => {
     setModalIsOpen(!modalIsOpen);
   };
-  console.log(isLoading);
+  console.log(workout);
 
   return (
-    <div className="px-10 pt-3 w-full">
+    <div className=" pt-3 w-full">
       {modalIsOpen ? (
-        <ExerciseModal addExercise={addExercise} toggleModal={toggleModal} />
+        <ExerciseModal
+          addExercise={addExercise}
+          toggleModal={toggleModalExercises}
+        />
       ) : (
         <>
-          {isCreated ? (
+          {isUpdated ? (
             <p className="text-center text-2xl font-bold text-gray-200">
               {message}
             </p>
           ) : (
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleUpdate}>
               <label className="block text-gray-200  font-bold text-xl mb-2">
                 Nome:
               </label>
@@ -116,7 +88,7 @@ const CreateWorkout = () => {
               </label>
               <button
                 className="bg-gray-200 hover:bg-gray-400 transition-all duration-300 ease-in-out focus:outline-none focus:shadow-outline text-gray-800 font-bold py-1 px-4 rounded-full"
-                onClick={toggleModal}
+                onClick={toggleModalExercises}
               >
                 Acidiciona Exercícios
               </button>
@@ -137,7 +109,13 @@ const CreateWorkout = () => {
                 className="px-4 py-2 mt-4 mb-2 bg-blue-500 opacity-70 hover:opacity-100 text-white font-bold rounded-full shadow-lg transition-transform duration-300 transform hover:scale-110"
                 type="submit"
               >
-                Criar Treino
+                Atualizar Treino
+              </button>
+              <button
+                className="px-4 py-2 mx-4 bg-blue-700 opacity-70 hover:opacity-100 text-white font-bold rounded-full shadow-lg transition-transform duration-300 transform hover:scale-110"
+                onClick={() => exitModal()}
+              >
+                Sair
               </button>
             </form>
           )}
@@ -147,4 +125,4 @@ const CreateWorkout = () => {
   );
 };
 
-export default CreateWorkout;
+export default ModalWorkoutUpdate;
