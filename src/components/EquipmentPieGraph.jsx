@@ -48,7 +48,7 @@ const EquipmentBarChart = () => {
               style={{ width: `${data.percentage}%` }}
               className="bg-blue-500 h-full rounded-full absolute left-0 top-0 transition duration-500 ease-in-out"
             ></div>
-            <div className="text-gray-800 font-bold w-full flex justify-between px-3 py-1 transition duration-500 ease-in-out ">
+            <div className="text-gray-800 text-sm md:text-md lg:text-lg font-bold w-full flex justify-between px-3 py-1 transition duration-500 ease-in-out ">
               <div className="text-gray-800 font-bold z-50">
                 {data.equipment}
               </div>
