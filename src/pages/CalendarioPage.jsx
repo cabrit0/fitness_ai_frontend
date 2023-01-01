@@ -11,7 +11,7 @@ const ExercisesPage = () => {
         <Calendar />
         <div className="my-8">
           <h1 className="text-white text-center font-bold">
-            Meus Exercícios, a ser construido...
+            Calendário, a ser construido...
           </h1>
         </div>
       </div>
