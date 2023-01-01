@@ -52,14 +52,14 @@ const ExerciseModal = ({ toggleModal, addExercise }) => {
           />
           <div className="flex items-center justify-center mt-6">
             <button
-              className="bg-blue-500 opacity-70 hover:opacity-100 text-gray-200 font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline mx-4 transition-transform duration-200 transform hover:-
+              className="bg-blue-500 opacity-70 hover:opacity-100 text-gray-200 font-bold py-1 px-5 rounded-2xl focus:outline-none focus:shadow-outline mx-4 transition-transform duration-200 transform hover:-
 translate-y-0.5 hover:scale-110"
               type="submit"
             >
               Adiciona Exercício
             </button>
             <button
-              className="bg-red-500 hover:bg-red-600 opacity-70 hover:opacity-100 text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline mx-4 transition-transform duration-200 transform hover:-
+              className="bg-red-500 hover:bg-red-600 opacity-70 hover:opacity-100 text-white font-bold py-1 px-5 rounded-2xl focus:outline-none focus:shadow-outline mx-4 transition-transform duration-200 transform hover:-
 translate-y-0.5 hover:scale-110"
               onClick={() => toggleModal(false)}
             >

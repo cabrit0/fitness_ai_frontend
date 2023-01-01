@@ -157,7 +157,7 @@ const ModalWorkoutUpdate = ({
                 Atualizar Treino
               </button>
               <button
-                className="px-4 py-2 mx-4 bg-blue-700 opacity-70 hover:opacity-100 text-white font-bold rounded-full shadow-lg transition-transform duration-300 transform hover:scale-110"
+                className="px-4 py-2 mx-4 bg-red-500 hover:bg-red-600 opacity-70 hover:opacity-100 text-white font-bold rounded-full shadow-lg transition-transform duration-300 transform hover:scale-110"
                 onClick={() => exitModal()}
               >
                 Sair
