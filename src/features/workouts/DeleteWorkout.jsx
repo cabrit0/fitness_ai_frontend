@@ -53,7 +53,7 @@ const DeleteWorkout = () => {
         workouts.map((workout) => (
           <div
             key={workout._id}
-            className="my-4 py-4 flex items-center bg-blue-400 opacity-40 hover:opacity-70 rounded-lg shadow-lg transition-all duration-400 ease-in-out"
+            className="my-4 py-4 flex items-center bg-blue-400 opacity-40 hover:opacity-70 rounded-2xl shadow-lg transition-all duration-400 ease-in-out"
           >
             <div className="mx-8 flex w-2/3 flex-col items-center">
               <h2 className="text-2xl text-white font-bold mb-2">

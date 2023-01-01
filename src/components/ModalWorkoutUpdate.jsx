@@ -115,7 +115,7 @@ const ModalWorkoutUpdate = ({
                 Nome:
               </label>
               <input
-                className="border opacity-70 h-8 focus:opacity-100 rounded-lg p-2 w-full"
+                className="border opacity-70 h-8 focus:opacity-100 rounded-xl p-2 w-full"
                 type="text"
                 value={name}
                 onChange={(event) => setName(event.target.value)}
