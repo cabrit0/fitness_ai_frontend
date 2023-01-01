@@ -73,7 +73,7 @@ const ModalWorkoutUpdate = ({
       .then((response) => {
         dispatch(updateWorkout(data));
         console.log(response.response);
-        setMessage("Workout updated successfully!");
+        setMessage("Workout atualizado com sucesso!");
         setIsUpdated(true);
         //exitModal();
       })
