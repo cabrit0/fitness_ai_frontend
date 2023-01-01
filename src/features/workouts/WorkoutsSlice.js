@@ -17,13 +17,12 @@ const workoutsSlice = createSlice({
     },
     // sets the current workout
     setWorkout: (state, action) => {
-      console.log("setWorkout action:", action); // log the action object
-      console.log("state before setWorkout:", state); // log the state before the reducer is applied
+      //console.log("setWorkout action:", action); // log the action object
+      //console.log("state before setWorkout:", state); // log the state before the reducer is applied
       state.isLoading = true;
-      //const { workout } = action.payload;
       state.currentWorkout = action.payload;
       state.isLoading = false;
-      console.log("state after setWorkout:", state); // log the state after the reducer is applied
+      //console.log("state after setWorkout:", state); // log the state after the reducer is applied
     },
     //updates the current workout with new information
     updateWorkout: (state, action) => {
@@ -31,6 +30,7 @@ const workoutsSlice = createSlice({
       const { workout } = action.payload;
       state.currentWorkout = { ...state.currentWorkout, ...workout };
       state.isLoading = false;
+      //console.log("state after setWorkout:", state); // log the state after the reducer is applied
     },
     // retrieves all workouts
     seeAllWorkouts: (state, action) => {

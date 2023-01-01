@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import {
   selectExercises,
-  selectRandomExercises,
 } from "../exercises/exercisesSlice";
 
 const ExerciseModal = ({ toggleModal, addExercise }) => {
@@ -10,12 +9,13 @@ const ExerciseModal = ({ toggleModal, addExercise }) => {
   const [reps, setReps] = useState("");
 
   const exercises = useSelector(selectExercises);
-  const randomExercises = useSelector(selectRandomExercises);
-  const dispatch = useDispatch();
+/*   const randomExercises = useSelector(selectRandomExercises);
+  const dispatch = useDispatch(); */
 
   const handleSubmit = (event) => {
     event.preventDefault();
     addExercise(selectedExercise, reps);
+    console.log(selectedExercise)
     toggleModal();
   };
 

@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import ExercisesCardWorkouts from "../features/exercises/ExercisesCardWorkouts";
 import ExerciseModal from "../features/workouts/ExerciseModal";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  updateWorkout,
-  selectWorkouts,
-} from "../features/workouts/WorkoutsSlice";
+import { updateWorkout } from "../features/workouts/WorkoutsSlice";
 import { selectExercises } from "../features/exercises/exercisesSlice";
 
 const ModalWorkoutUpdate = ({
@@ -20,14 +18,15 @@ const ModalWorkoutUpdate = ({
   setReps,
   message,
   setMessage,
-  isUpdated,
-  handleUpdate,
   exitModal,
 }) => {
   const dispatch = useDispatch();
-  const workouts = useSelector(selectWorkouts);
+  //const workouts = useSelector(selectWorkouts);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const exercisesFromServer = useSelector(selectExercises);
+  const userAccessToken = useSelector((state) => state.login.user.accessToken);
+  const id = useSelector((state) => state.login.user.foundUser._id);
+  const [isUpdated, setIsUpdated] = useState(false);
 
   const addExercise = (id) => {
     // Find the exercise with the given id in the exercisesFromServer array
@@ -38,12 +37,58 @@ const ModalWorkoutUpdate = ({
     setExercises([...exercises, exercise]);
   };
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const data = {
+      id: id,
+      workoutId: workout._id,
+      name: name,
+      description: description,
+      exercises: exercises.map((exercise) => {
+        console.log(exercise);
+        return {
+          name: exercise.name,
+          bodyPart: exercise.bodyPart,
+          target: exercise.target,
+          equipment: exercise.equipment,
+          animatedGif: exercise.animatedGif,
+        };
+      }),
+      reps,
+    };
+    console.log(data);
+
+    //https://fitness-api.onrender.com
+    axios
+      .patch(
+        `https://fitness-api.onrender.com/api/v1/user/workouts&exercises`,
+        data,
+        {
+          headers: {
+            Authorization: "Bearer " + userAccessToken,
+          },
+        }
+      )
+      .then((response) => {
+        dispatch(updateWorkout(data));
+        console.log(response.response);
+        setMessage("Workout updated successfully!");
+        setIsUpdated(true);
+        //exitModal();
+      })
+      .catch((err) => {
+        setMessage(err.response);
+      });
+  };
+
   // Set the initial state of the input fields with the values from the current workout object
   useEffect(() => {
     setName(workout.name);
     setDescription(workout.description);
     setExercises(workout.exercises);
     setReps(workout.reps);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [workout]);
 
   const toggleModalExercises = () => {
@@ -65,7 +110,7 @@ const ModalWorkoutUpdate = ({
               {message}
             </p>
           ) : (
-            <form onSubmit={handleUpdate}>
+            <form onSubmit={handleSubmit}>
               <label className="block text-gray-200  font-bold text-xl mb-2">
                 Nome:
               </label>
@@ -93,7 +138,7 @@ const ModalWorkoutUpdate = ({
                 Acidiciona Exercícios
               </button>
               {exercises.map((exercise) => (
-                <ExercisesCardWorkouts key={exercise.id} exercise={exercise} />
+                <ExercisesCardWorkouts key={exercise._id} exercise={exercise} />
               ))}
               <label className="block  text-gray-200 text-sm font-bold mt-4 mb-2">
                 Number of reps:
@@ -107,7 +152,7 @@ const ModalWorkoutUpdate = ({
               />
               <button
                 className="px-4 py-2 mt-4 mb-2 bg-blue-500 opacity-70 hover:opacity-100 text-white font-bold rounded-full shadow-lg transition-transform duration-300 transform hover:scale-110"
-                type="submit"
+                onSubmit={handleSubmit}
               >
                 Atualizar Treino
               </button>

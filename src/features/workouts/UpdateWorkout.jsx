@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from "react";
+//import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-import { updateWorkout, selectWorkouts, setWorkout } from "./WorkoutsSlice";
+import {  selectWorkouts, setWorkout } from "./WorkoutsSlice";
 import ModalWorkoutUpdate from "../../components/ModalWorkoutUpdate";
 
 const UpdateWorkout = () => {
   const dispatch = useDispatch();
   const workouts = useSelector(selectWorkouts);
+  const userAccessToken = useSelector((state) => state.login.user.accessToken);
+  const id = useSelector((state) => state.login.user.foundUser._id);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [exercises, setExercises] = useState([]);
@@ -15,27 +17,14 @@ const UpdateWorkout = () => {
   const [message, setMessage] = useState("");
   const [isUpdated, setIsUpdated] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [current, setCurrent] = useState(currentWorkout);
 
-  const handleUpdate = (event) => {
-    event.preventDefault();
-
-    const updatedWorkout = {
-      id: currentWorkout.id,
-      name,
-      description,
-      exercises,
-      reps,
-    };
-
-    dispatch(updateWorkout({ workout: updatedWorkout }));
-  };
+  console.log(id, userAccessToken, currentWorkout);
 
   const toggleModal = (workout) => {
     dispatch(setWorkout(workout));
     setModalIsOpen(!modalIsOpen);
-    console.log(workout);
-    console.log(currentWorkout);
+    //console.log(workout);
+    //console.log(currentWorkout);
   };
 
   return (
@@ -53,8 +42,8 @@ const UpdateWorkout = () => {
           setReps={setReps}
           message={message}
           setMessage={setMessage}
-          isUpdated={isUpdated}
-          handleUpdate={handleUpdate}
+          /* isUpdated={isUpdated} */
+          /* handleUpdate={handleUpdate} */
           exitModal={toggleModal}
         />
       ) : (

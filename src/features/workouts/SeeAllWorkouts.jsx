@@ -11,7 +11,7 @@ const SeeAllWorkouts = () => {
   const id = useSelector((state) => state.login.user.foundUser._id);
   const isLoading = useSelector((state) => state.workouts.isLoading);
 
-  console.log(id, userAccessToken, workouts);
+  //console.log(id, userAccessToken, workouts);
 
   //https://fitness-api.onrender.com
   const serverWorkouts = () => {
@@ -26,7 +26,7 @@ const SeeAllWorkouts = () => {
       )
       .then((response) => {
         // do something with the response here, like dispatch an action to update the state
-        console.log(response.data);
+        //console.log(response.data);
         dispatch(seeAllWorkouts({ workouts: response.data }));
       })
       .catch((error) => {
@@ -49,7 +49,7 @@ const SeeAllWorkouts = () => {
       ) : (
         workouts.map((workout) => (
           <div
-            key={workout.id}
+            key={workout._id}
             className="my-4 py-4 flex items-center bg-blue-400 opacity-40 hover:opacity-70 rounded-lg shadow-lg transition-all duration-400 ease-in-out"
           >
             <div className="mx-8 flex w-1/3 flex-col items-center">
@@ -67,7 +67,7 @@ const SeeAllWorkouts = () => {
               {workout.exercises.map((exercise, index) => (
                 <div
                   className="bg-white m-1 mx-2 w-36 h-48 flex flex-col text-center shadow-xl rounded-xl p-2"
-                  key={exercise.id}
+                  key={exercise._id}
                 >
                   <p className="font-bold w-32 text-sm truncate overflow-hidden hover:text-clip">
                     {exercise.name}

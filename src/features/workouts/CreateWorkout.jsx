@@ -49,6 +49,7 @@ const CreateWorkout = () => {
       }),
       reps,
     };
+
     axios
       .post(
         "https://fitness-api.onrender.com/api/v1/user/workouts&exercises",
@@ -75,7 +76,6 @@ const CreateWorkout = () => {
         console.log(error);
       });
   };
-
 
   const toggleModal = () => {
     setModalIsOpen(!modalIsOpen);
