@@ -83,7 +83,7 @@ const CreateWorkout = () => {
   console.log(isLoading);
 
   return (
-    <div className="px-10 pt-3 w-full">
+    <div className="px-10 md:px-52 pt-3 w-full">
       {modalIsOpen ? (
         <ExerciseModal addExercise={addExercise} toggleModal={toggleModal} />
       ) : (

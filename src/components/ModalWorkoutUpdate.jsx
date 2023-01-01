@@ -52,7 +52,7 @@ const ModalWorkoutUpdate = ({
           bodyPart: exercise.bodyPart,
           target: exercise.target,
           equipment: exercise.equipment,
-          animatedGif: exercise.animatedGif,
+          animatedGif: exercise.animatedGif || exercise.gifUrl,
         };
       }),
       reps,
@@ -88,16 +88,16 @@ const ModalWorkoutUpdate = ({
     setDescription(workout.description);
     setExercises(workout.exercises);
     setReps(workout.reps);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [workout]);
 
   const toggleModalExercises = () => {
     setModalIsOpen(!modalIsOpen);
   };
-  console.log(workout);
+  //console.log(workout);
 
   return (
-    <div className=" pt-3 w-full">
+    <div className="px-10 md:px-52 pt-3 w-full">
       {modalIsOpen ? (
         <ExerciseModal
           addExercise={addExercise}

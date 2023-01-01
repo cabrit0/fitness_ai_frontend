@@ -18,7 +18,7 @@ const UpdateWorkout = () => {
   const [isUpdated, setIsUpdated] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  console.log(id, userAccessToken, currentWorkout);
+  //console.log(id, userAccessToken, currentWorkout);
 
   const toggleModal = (workout) => {
     dispatch(setWorkout(workout));
@@ -48,7 +48,7 @@ const UpdateWorkout = () => {
         />
       ) : (
         <>
-          <div className="px-4 pt-3 w-full">
+          <div className="px-10 md:px-52 pt-3 w-full">
             {isUpdated ? (
               <p className="text-center text-2xl font-bold text-gray-200">
                 {message}

@@ -42,7 +42,7 @@ const DeleteWorkout = () => {
   };
 
   return (
-    <div className="px-4 pt-3 w-full">
+    <div className="px-10 md:px-52 pt-3 w-full">
       {isDeleted ? (
         <p className="text-center text-2xl font-bold text-gray-200">
           {message}

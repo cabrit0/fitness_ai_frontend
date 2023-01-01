@@ -41,7 +41,7 @@ const SeeAllWorkouts = () => {
   }, [id]);
 
   return (
-    <div className="px-4 pt-3 w-full">
+    <div className="px-10 md:px-52 pt-3 w-full">
       {isLoading ? (
         <Loading />
       ) : workouts.length === 0 ? (
