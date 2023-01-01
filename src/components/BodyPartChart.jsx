@@ -53,7 +53,7 @@ const EquipmentBarChart = () => {
                 {data.bodyPart}
               </div>
               <div className="text-gray-800 font-bold z-50">
-                {data.percentage}%
+                {data.percentage.toFixed(0)}%
               </div>
             </div>
           </div>
