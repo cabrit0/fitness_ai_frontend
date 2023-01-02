@@ -2,7 +2,7 @@ import React from "react";
 import ProfileBanner from "../UI/ProfileBanner";
 import ProfileMenu from "../components/ProfileMenu";
 import Calendar from "../UI/Calendar";
-import FullCalendar from "../components/FullCalendar";
+import FullCalendar from "../features/calendar/FullCalendar";
 
 const ExercisesPage = () => {
   return (
