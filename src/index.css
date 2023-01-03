@@ -24,7 +24,7 @@
 }
 
 .calendar {
-  background-color: rgb(228, 228, 231);
+  background-color: rgb(209, 213, 219);
   border-radius: 15px;
   opacity: 0.6;
 }
@@ -40,20 +40,20 @@
 }
 
 .react-calendar__tile--now {
-  color: aliceblue;
+  color: rgb(228, 228, 231);
   background-color: rgb(33, 150, 243);
   font-weight: bold;
   border-radius: 10px;
 }
 
 .react-calendar__tile:hover {
-  color: aliceblue;
+  color: rgb(228, 228, 231);
   background-color: rgba(0, 140, 255, 0.4);
   opacity: 1;
   border-radius: 10px;
 }
 .react-calendar__tile--now:hover {
-  color: aliceblue;
+  color: rgb(228, 228, 231);
   background-color: rgb(33, 150, 243);
   opacity: 1;
   border-radius: 10px;
@@ -61,7 +61,7 @@
 
 .react-calendar__month-view__weekdays__weekday {
   background-color: rgb(0, 140, 255);
-  color: aliceblue;
+  color: rgb(228, 228, 231);
   height: 2em;
   display: flex;
   justify-content: center;
@@ -69,7 +69,7 @@
 
 .react-calendar__navigation {
   background-color: rgb(0, 140, 255);
-  color: aliceblue;
+  color: rgb(228, 228, 231);
   display: flex;
   justify-content: center;
 
@@ -87,4 +87,8 @@
 
 .react-calendar__month-view__days__day--weekend {
   color: rgb(0, 140, 255);
+}
+
+.calendar-tile-workout {
+  background-color: #ffcc66;
 }
