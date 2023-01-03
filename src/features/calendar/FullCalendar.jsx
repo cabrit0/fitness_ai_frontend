@@ -7,6 +7,7 @@ import { selectWorkouts } from "../workouts/WorkoutsSlice";
 import {
   createUserWorkout,
   fetchCalendarWorkouts,
+  setUserCalendarWorkouts,
 } from "../calendar/calendarSlice";
 
 function FullCalendar() {
@@ -17,29 +18,18 @@ function FullCalendar() {
   const [showModal, setShowModal] = useState(false);
   const [currentWorkout, setCurrentWorkout] = useState(null);
   const userWorkouts = useSelector(selectWorkouts);
-  const userAssignedWorkouts = useSelector(() =>
-    fetchCalendarWorkouts(id, userAccessToken)
-  );
-  console.log(userAssignedWorkouts);
-  
-  const getTileClassName = (date) => {
-    if (userAssignedWorkouts.includes((date))) {
-      return "workout-day";
-    }
-    return "";
+
+  const handleDayClick = (event) => {
+    const clickedDate = event;
+    setDateValue(moment(clickedDate).toDate());
+    setShowModal(true);
   };
-  
-    const handleDayClick = (event) => {
-      const clickedDate = event;
-      setDateValue(moment(clickedDate).toDate());
-      setShowModal(true);
-    };
-    console.log(moment(dateValue).format("DD/MM/YYYY"));
-  
-  /* useEffect(() => {
-    getTileClassName();
+  console.log(moment(dateValue).format("DD/MM/YYYY"));
+
+  useEffect(() => {
+    dispatch(fetchCalendarWorkouts(id, userAccessToken))
     //console.log('hey')
-  }, []); */
+  }, []);
 
   const closeModal = () => {
     // Close modal when user clicks the 'close' button
@@ -58,7 +48,7 @@ function FullCalendar() {
 
     axios
       .post(
-        "http://localhost:3500/api/v1/user/calendarOptions/assignWorkout",
+        "https://fitness-api.onrender.com/api/v1/user/calendarOptions/assignWorkout",
         data,
         {
           headers: {
@@ -150,8 +140,7 @@ function FullCalendar() {
   return (
     <div>
       <Calendar
-      className="calendar mx-8 md:mx-64"
-        /* tileClassName={getTileClassName} */
+        className="calendar mx-8 md:mx-64"
         onChange={handleDayClick}
         onClickDay={handleDayClick}
         value={dateValue}

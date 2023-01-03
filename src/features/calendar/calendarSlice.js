@@ -17,7 +17,7 @@ const calendarSlice = createSlice({
       state.calendarDate = action.payload.toISOString();
       state.isLoading = false;
     },
-    setUserWorkouts(state, action) {
+    setUserCalendarWorkouts(state, action) {
       state.isLoading = true;
       state.userWorkouts = action.payload;
       state.isLoading = false;
@@ -38,7 +38,7 @@ const calendarSlice = createSlice({
 
 export const {
   setCalendarDate,
-  setUserWorkouts,
+  setUserCalendarWorkouts,
   createUserWorkout,
   fetchUserWorkouts,
 } = calendarSlice.actions;
@@ -49,7 +49,7 @@ export const fetchCalendarWorkouts = (userId, accessToken) => {
   return async (dispatch) => {
     try {
       const response = await axios.post(
-        "http://localhost:3500/api/v1/user/calendarOptions/workouts",
+        "https://fitness-api.onrender.com/api/v1/user/calendarOptions/workouts",
         {
           id: userId,
         },
