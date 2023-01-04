@@ -58,7 +58,7 @@ export const fetchCalendarWorkouts = (userId, accessToken) => {
       const assignedWorkouts = response.data.filter(
         (workout) => workout.calendarDate
       );
-      console.log(assignedWorkouts);
+      //console.log(assignedWorkouts);
       return assignedWorkouts;
     } catch (error) {
       console.log(error);

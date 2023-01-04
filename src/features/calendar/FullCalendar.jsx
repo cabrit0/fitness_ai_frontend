@@ -30,7 +30,7 @@ function FullCalendar() {
     fetchData();
   }, []);
 
-  console.log(assignedWorkouts);
+  //console.log(assignedWorkouts);
 
   const getTileContent = (value) => {
     // Check if the current tile's date matches any of the dates in the assignedWorkouts array
@@ -44,7 +44,12 @@ function FullCalendar() {
     // If there is a matching workout, return a JSX element with a custom style applied
     if (matchingWorkout) {
       return (
-        <div style={{ backgroundColor: "#ffc107" }}>{value.date.getDate()}</div>
+        <div
+          style={{
+            borderRadius: "50%",
+            border: "1px solid #6680be",
+          }}
+        ></div>
       );
     }
 
@@ -59,7 +64,7 @@ function FullCalendar() {
     setDateValue(moment(clickedDate).toDate());
     setShowModal(true);
   };
-  console.log(moment(dateValue).format("DD/MM/YYYY"));
+  //console.log(moment(dateValue).format("DD/MM/YYYY"));
 
   useEffect(() => {
     dispatch(fetchCalendarWorkouts(id, userAccessToken));
@@ -179,7 +184,7 @@ function FullCalendar() {
   return (
     <div>
       <Calendar
-        className="calendar mx-8 md:mx-64"
+        className="calendar mx-8 my-8 md:mx-64"
         tileContent={getTileContent}
         onChange={handleDayClick}
         onClickDay={handleDayClick}

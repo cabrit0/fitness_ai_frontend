@@ -1,21 +1,20 @@
 import React from "react";
 import ProfileBanner from "../UI/ProfileBanner";
 import ProfileMenu from "../components/ProfileMenu";
-import Calendar from "../UI/Calendar";
 import FullCalendar from "../features/calendar/FullCalendar";
+import AssignedWorkouts from "../features/calendar/AssignedWorkouts";
 
-const ExercisesPage = () => {
+const CalendarioPage = () => {
   return (
     <div className="bg-mesh w-screen flex flex-col h-screen overflow-hidden">
       <ProfileBanner />
       <div className="overflow-hidden overflow-y-scroll flex-grow no-scrollbar">
-        <div className="my-8">
-          <FullCalendar />
-        </div>
+        <FullCalendar />
+        <AssignedWorkouts />
       </div>
       <ProfileMenu className="" />
     </div>
   );
 };
 
-export default ExercisesPage;
+export default CalendarioPage;
