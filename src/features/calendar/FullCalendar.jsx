@@ -19,6 +19,7 @@ function FullCalendar() {
   const [currentWorkout, setCurrentWorkout] = useState(null);
   const userWorkouts = useSelector(selectWorkouts);
   const [assignedWorkouts, setAssignedWorkouts] = useState([]);
+   const assignedWorkoutsCalendar = useSelector(selectUserCalendarWorkouts);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,7 +29,7 @@ function FullCalendar() {
       setAssignedWorkouts(workouts);
     };
     fetchData();
-  }, []);
+  }, [assignedWorkoutsCalendar]);
 
   //console.log(assignedWorkouts);
 
@@ -65,11 +66,6 @@ function FullCalendar() {
     setShowModal(true);
   };
   //console.log(moment(dateValue).format("DD/MM/YYYY"));
-
-  useEffect(() => {
-    dispatch(fetchCalendarWorkouts(id, userAccessToken));
-    //console.log('hey')
-  }, []);
 
   const closeModal = () => {
     // Close modal when user clicks the 'close' button
@@ -184,14 +180,14 @@ function FullCalendar() {
   return (
     <div>
       <Calendar
-        className="calendar mx-8 my-8 md:mx-64"
+        className="calendar mx-8 my-20 md:mx-64"
         tileContent={getTileContent}
         onChange={handleDayClick}
         onClickDay={handleDayClick}
         value={dateValue}
       />
       {showModal && (
-        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center">
+        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-600 bg-opacity-70">
           <div className=" rounded p-4 bg-gray-300 w-11/12 h-11/12 opacity-100">
             <div>
               <p className="p-6 text-center text-blue-700 font-bold">

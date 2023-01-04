@@ -33,6 +33,12 @@ const calendarSlice = createSlice({
       state.userWorkouts = action.payload;
       state.isLoading = false;
     },
+    removeWorkout(state, action) {
+      const workoutId = action.payload;
+      state.userWorkouts = state.userWorkouts.filter(
+        (workout) => workout.workoutId !== workoutId
+      );
+    },
   },
 });
 
@@ -45,6 +51,10 @@ export const {
 
 export const selectUserCalendarWorkouts = (state) => state.calendar.userWorkouts;
 export const selectCalendarDate = (state) => state.calendar.calendarDate;
+export const removeUserWorkout = (workoutId) => ({
+  type: "calendar/removeWorkout",
+  payload: workoutId,
+});
 export const fetchCalendarWorkouts = (userId, accessToken) => {
   return async (dispatch) => {
     try {
