@@ -43,7 +43,7 @@ export const {
   fetchUserWorkouts,
 } = calendarSlice.actions;
 
-export const selectUserWorkouts = (state) => state.calendar.userWorkouts;
+export const selectUserCalendarWorkouts = (state) => state.calendar.userWorkouts;
 export const selectCalendarDate = (state) => state.calendar.calendarDate;
 export const fetchCalendarWorkouts = (userId, accessToken) => {
   return async (dispatch) => {
@@ -55,8 +55,11 @@ export const fetchCalendarWorkouts = (userId, accessToken) => {
         },
         { headers: { Authorization: `Bearer ${accessToken}` } }
       );
-      console.log(response.data);
-      //console.log()
+      const assignedWorkouts = response.data.filter(
+        (workout) => workout.calendarDate
+      );
+      console.log(assignedWorkouts);
+      return assignedWorkouts;
     } catch (error) {
       console.log(error);
     }

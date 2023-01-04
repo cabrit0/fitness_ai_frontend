@@ -7,7 +7,7 @@ import { selectWorkouts } from "../workouts/WorkoutsSlice";
 import {
   createUserWorkout,
   fetchCalendarWorkouts,
-  setUserCalendarWorkouts,
+  selectUserCalendarWorkouts,
 } from "../calendar/calendarSlice";
 
 function FullCalendar() {
@@ -18,6 +18,41 @@ function FullCalendar() {
   const [showModal, setShowModal] = useState(false);
   const [currentWorkout, setCurrentWorkout] = useState(null);
   const userWorkouts = useSelector(selectWorkouts);
+  const [assignedWorkouts, setAssignedWorkouts] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const workouts = await dispatch(
+        fetchCalendarWorkouts(id, userAccessToken)
+      );
+      setAssignedWorkouts(workouts);
+    };
+    fetchData();
+  }, []);
+
+  console.log(assignedWorkouts);
+
+  const getTileContent = (value) => {
+    // Check if the current tile's date matches any of the dates in the assignedWorkouts array
+    const matchingWorkout = assignedWorkouts.find((workout) => {
+      // Parse the calendarDate string into a Date object
+      const workoutDate = new Date(workout.calendarDate);
+      // Compare the parsed workoutDate with the value.date object
+      return workoutDate.getTime() === value.date.getTime();
+    });
+
+    // If there is a matching workout, return a JSX element with a custom style applied
+    if (matchingWorkout) {
+      return (
+        <div style={{ backgroundColor: "#ffc107" }}>{value.date.getDate()}</div>
+      );
+    }
+
+    // If there is no matching workout, just return the default content for the tile
+    return <div>{value.date.getDate()}</div>;
+  };
+
+  //getTileContent(dateValue)
 
   const handleDayClick = (event) => {
     const clickedDate = event;
@@ -27,7 +62,7 @@ function FullCalendar() {
   console.log(moment(dateValue).format("DD/MM/YYYY"));
 
   useEffect(() => {
-    dispatch(fetchCalendarWorkouts(id, userAccessToken))
+    dispatch(fetchCalendarWorkouts(id, userAccessToken));
     //console.log('hey')
   }, []);
 
@@ -64,6 +99,10 @@ function FullCalendar() {
             workoutId: workout._id,
           })
         );
+        setAssignedWorkouts([
+          ...assignedWorkouts,
+          { calendarDate: dateValue.toISOString(), workoutId: workout._id },
+        ]);
         closeModal();
       })
       .catch((error) => {
@@ -141,6 +180,7 @@ function FullCalendar() {
     <div>
       <Calendar
         className="calendar mx-8 md:mx-64"
+        tileContent={getTileContent}
         onChange={handleDayClick}
         onClickDay={handleDayClick}
         value={dateValue}
