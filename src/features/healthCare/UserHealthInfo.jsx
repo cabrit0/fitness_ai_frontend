@@ -30,18 +30,22 @@ function UserHealthInfo() {
   return (
     <>
       <h2 className="text-center text-xl text-gray-100 pb-4 ">Meus Dados</h2>
-      <div className="bg-gray-100 bg-opacity-20 flex flex-col items-center mx-12 rounded-2xl">
-        <div className="text-gray-400 mb-2 w-full rounded-lg pt-4">
-          Idade: {user.idade} | Altura: {user.altura} cm | Peso: {user.peso} kg
-          | Sexo: {user.sexo}
+      <div className="bg-gray-100 bg-opacity-20 flex flex-col items-center py-2 mx-12 rounded-2xl">
+        <div className="text-gray-400 w-full rounded-lg pt-2">
+          Idade: {user.idade} | Sexo: {user.sexo}
+        </div>
+        <div className="text-gray-400 w-full rounded-lg pt-1 pb-2">
+          Altura: {user.altura} cm | Peso: {user.peso} kg
         </div>
         <div className=" w-full py-2 px-4 rounded-lg">
           <div className="text-gray-400 font-bold mb-2">
             Indice de Massa Corporal: {bmi.toFixed(1)}
           </div>
-          <div className="text-gray-400 font-bold pb-4">
-            Categoria Corporal:{" "}
-            <span className={`${textColor} opacity-80`}>{bodyCategory}</span>
+          <div className="text-gray-400 font-bold">
+            Categoria Corporal:
+            <span className={`${textColor} opacity-80`}>
+              {`\t` + bodyCategory}
+            </span>
           </div>
         </div>
       </div>
