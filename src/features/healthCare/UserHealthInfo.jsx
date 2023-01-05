@@ -39,10 +39,10 @@ function UserHealthInfo() {
         </div>
         <div className=" w-full py-2 px-4 rounded-lg">
           <div className="text-gray-400 font-bold mb-2">
-            Indice de Massa Corporal: {bmi.toFixed(1)}
+            Indice de Massa Corporal:{`\t` + bmi.toFixed(1)}
           </div>
           <div className="text-gray-400 font-bold">
-            Categoria Corporal:
+            Categoria:
             <span className={`${textColor} opacity-80`}>
               {`\t` + bodyCategory}
             </span>
