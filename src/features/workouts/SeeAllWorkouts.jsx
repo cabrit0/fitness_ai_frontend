@@ -45,7 +45,7 @@ const SeeAllWorkouts = () => {
       {isLoading ? (
         <Loading />
       ) : workouts.length === 0 ? (
-        <p className="text-center text-gray-500">No workouts to display</p>
+        <p className="text-center text-gray-500">Sem workouts para mostrar...</p>
       ) : (
         workouts.map((workout) => (
           <div
