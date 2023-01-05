@@ -61,23 +61,23 @@ const ProfileExercises = () => {
     <>
       {isAllExercises ? (
         <h2
-          className="text-gray-300 text-center text-xl font-bold pt-8"
+          className="text-gray-300 text-center text-xl font-bold pt-6"
           ref={exerciseContainerRef}
         >
           Todos Exercícios
         </h2>
       ) : (
         <h2
-          className="text-gray-300 text-center text-xl font-bold pt-8"
+          className="text-gray-300 text-center text-xl font-bold"
           ref={exerciseContainerRef}
         >
           Top Exercícios
         </h2>
       )}
-      <div className="no-scrollbar">
+      <div className="no-scrollbar pb-10">
         {!isLoading ? (
           <>
-            <div className="flex flex-wrap justify-center mt-12 px-16 lg:px-52 no-scrollbar">
+            <div className="flex flex-wrap justify-center mt-8 px-16 lg:px-52 no-scrollbar">
               {isAllExercises && (
                 <FilterMenu
                   exercises={exercises}

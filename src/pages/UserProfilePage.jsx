@@ -4,6 +4,7 @@ import ProfileBanner from "../UI/ProfileBanner";
 import Calendar from "../UI/Calendar";
 import ProfileExercises from "../features/exercises/ProfileExercises";
 import ChartLayout from "../layouts/ChartLayout";
+import AssignedWorkouts from "../features/calendar/AssignedWorkouts";
 
 const UserProfilePage = () => {
   return (
@@ -12,7 +13,8 @@ const UserProfilePage = () => {
       <div className="overflow-hidden overflow-y-scroll flex-grow no-scrollbar">
         <Calendar />
         <ChartLayout />
-        <ProfileExercises />
+        <ProfileExercises  />
+        <AssignedWorkouts className="my-8" />
       </div>
       <ProfileMenu className="" />
     </div>

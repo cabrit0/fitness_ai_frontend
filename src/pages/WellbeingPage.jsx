@@ -2,6 +2,7 @@ import React from "react";
 import ProfileBanner from "../UI/ProfileBanner";
 import ProfileMenu from "../components/ProfileMenu";
 import Calendar from "../UI/Calendar";
+import UserHealthInfo from "../features/healthCare/UserHealthInfo";
 
 const WellbeingPage = () => {
   return (
@@ -11,7 +12,7 @@ const WellbeingPage = () => {
         <Calendar />
         <div className="my-8">
           <h1 className="text-white text-center font-bold">
-            Meu Bem Estar, a ser construido...
+            <UserHealthInfo />
           </h1>
         </div>
       </div>
