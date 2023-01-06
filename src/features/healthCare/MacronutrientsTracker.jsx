@@ -95,7 +95,7 @@ const MacronutrientTracker = () => {
               className="block text-gray-400 font-bold py-4"
               htmlFor="carbs"
             >
-              Carboidratos (g):
+              Hid. Carbono (g):
             </label>
             <input
               className="shadow-xl rounded-2xl w-28 text-center py-2 px-6 bg-gray-600 text-gray-300 hover:text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
