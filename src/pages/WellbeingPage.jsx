@@ -3,6 +3,7 @@ import ProfileBanner from "../UI/ProfileBanner";
 import ProfileMenu from "../components/ProfileMenu";
 import Calendar from "../UI/Calendar";
 import UserHealthInfo from "../features/healthCare/UserHealthInfo";
+import MacronutrientTracker from "../features/healthCare/MacronutrientsTracker";
 
 const WellbeingPage = () => {
   return (
@@ -11,9 +12,10 @@ const WellbeingPage = () => {
       <div className="overflow-hidden overflow-y-scroll flex-grow no-scrollbar">
         <Calendar />
         <div className="my-8">
-          <h1 className="text-white text-center font-bold">
+          <div className="text-center font-bold">
             <UserHealthInfo />
-          </h1>
+          </div>
+            <MacronutrientTracker />
         </div>
       </div>
       <ProfileMenu className="" />
