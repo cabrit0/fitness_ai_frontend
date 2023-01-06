@@ -43,25 +43,27 @@ const MacronutrientTracker = () => {
     let carbIntake = Math.round((calories * 0.5) / 4);
     let fatIntake = Math.round((calories * 0.3) / 9);
     setRecommendation(
-      `Para atingir seu objetivo de ${goal}, você deve consumir aproximadamente ${calories.toFixed(2)} calorias por dia, incluindo ${proteinIntake}g de proteínas, ${carbIntake}g de carboidratos e ${fatIntake.toFixed(0)}g de gorduras.`
+      `Para atingir seu objetivo de ${goal}, você deve consumir aproximadamente ${calories.toFixed(
+        0
+      )} calorias por dia, incluindo ${proteinIntake}g de proteínas, ${carbIntake}g de carboidratos e ${fatIntake}g de gorduras.`
     );
   };
 
   return (
     <div className="py-6 px-5 mx-12 my-4 bg-gray-100 bg-opacity-20 rounded-2xl shadow-xl">
-      <h2 className="text-2xl font-bold text-gray-100 mb-4">
+      <h2 className="text-2xl font-bold text-gray-100 my-4 text-center">
         Tracker de Nutrientes e Atividade
       </h2>
-      <form className="my-4">
-        <div className="flex h-12 my-4 items-center justify-between">
+      <form className="flex flex-col md:flex-row md:justify-center text-center items-center">
+        <div className="items-center md:mx-20">
           <label
-            className="block text-gray-300 font-bold my-6"
+            className="block text-gray-400 font-bold my-6"
             htmlFor="activityFactor"
           >
             Fator de atividade:
           </label>
           <select
-            className="w-40 h-10 bg-gray-600 border-none hover:text-gray-100 text-gray-300 px-6 py-2  rounded-2xl shadow-xl leading-tight focus:outline-none focus:shadow"
+            className="w-full bg-gray-600 border-none hover:text-gray-100 text-gray-300 px-6 py-2  rounded-2xl shadow-xl leading-tight focus:outline-none focus:shadow"
             value={activityFactor}
             onChange={(e) => setActivityFactor(e.target.value)}
           >
@@ -74,29 +76,29 @@ const MacronutrientTracker = () => {
             <option value={1.9}>Extremamente ativo</option>
           </select>
 
-          <label className="block text-gray-300 font-bold my-6" htmlFor="goal">
+          <label className="block text-gray-400 font-bold my-6" htmlFor="goal">
             Objetivo:
           </label>
           <select
-            className="w-48 h-10 bg-gray-600 border-none hover:text-gray-100 text-gray-300 px-6 py-2  rounded-2xl shadow-xl leading-tight focus:outline-none focus:shadow"
-            value={activityFactor}
-            onChange={(e) => setActivityFactor(e.target.value)}
+            className="w-full bg-gray-600 border-none hover:text-gray-100 text-gray-300 px-6 py-2  rounded-2xl shadow-xl leading-tight focus:outline-none focus:shadow"
+            value={goal}
+            onChange={(e) => setGoal(e.target.value)}
           >
             <option value="weightLoss">Perder peso</option>
             <option value="maintenance">Manter de peso</option>
             <option value="weightGain">Ganhar peso</option>
           </select>
         </div>
-        <div className="px-6 py-2 flex justify-around text-center">
+        <div className="text-center md:mx-20">
           <div>
             <label
-              className="block text-gray-300 font-bold py-4"
+              className="block text-gray-400 font-bold py-4"
               htmlFor="carbs"
             >
               Carboidratos (g):
             </label>
             <input
-              className="shadow-xl rounded-2xl w-28 py-2 px-6 bg-gray-600 text-gray-300 hover:text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow-xl rounded-2xl w-28 text-center py-2 px-6 bg-gray-600 text-gray-300 hover:text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
               type="number"
               placeholder="Insira a quantidade de carboidratos consumidos"
               value={carbs}
@@ -105,13 +107,13 @@ const MacronutrientTracker = () => {
           </div>
           <div>
             <label
-              className="block text-gray-300 font-bold py-4"
+              className="block text-gray-400 font-bold py-4"
               htmlFor="proteins"
             >
               Proteínas (g):
             </label>
             <input
-              className="shadow-xl rounded-2xl w-28 py-2 px-6 bg-gray-600 text-gray-300 hover:text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow-xl rounded-2xl w-28 text-center py-2 px-6 bg-gray-600 text-gray-300 hover:text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
               type="number"
               placeholder="Insira a quantidade de proteínas consumidas"
               value={proteins}
@@ -120,13 +122,13 @@ const MacronutrientTracker = () => {
           </div>
           <div>
             <label
-              className="block text-gray-300 font-bold py-4"
+              className="block text-gray-400 font-bold py-4"
               htmlFor="fats"
             >
               Gorduras (g):
             </label>
             <input
-              className="shadow-xl rounded-2xl w-28 py-2 px-6 bg-gray-600 text-gray-300 hover:text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow-xl rounded-2xl w-28 text-center py-2 px-6 bg-gray-600 text-gray-300 hover:text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
               type="number"
               placeholder="Insira a quantidade de gorduras consumidas"
               value={fats}
@@ -134,22 +136,24 @@ const MacronutrientTracker = () => {
             />
           </div>
         </div>
-        <div className="flex justify-center py-6">
-          <button
-            onClick={calculateRecommendation}
-            className="text-center bg-gray-200 text-gray-700 opacity-70 transition-all duration-300 ease-in-out focus:outline-none focus:shadow-outline hover:text-gray-200 hover:opacity-100 hover:bg-blue-500 font-bold py-2 px-8 rounded-xl"
-            type="button"
-          >
-            Calcular recomendação
-          </button>
-        </div>
       </form>
+      <div className="flex justify-center py-6">
+        <button
+          onClick={calculateRecommendation}
+          className="text-center bg-gray-200 text-gray-700 opacity-70 transition-all duration-300 ease-in-out focus:outline-none focus:shadow-outline hover:text-gray-200 hover:opacity-100 hover:bg-blue-500 font-bold py-2 px-8 rounded-xl"
+          type="button"
+        >
+          Calcular recomendação
+        </button>
+      </div>
       {recommendation && (
         <div className="py-2">
-          <h3 className="text-lg font-bold text-gray-200 mb-2">
+          <h2 className="text-lg font-bold text-center text-gray-200 mb-2">
             Recomendação de macronutrientes:
-          </h3>
-          <p className="text-gray-300">{recommendation}</p>
+          </h2>
+          <p className="text-gray-400 text-lg text-center font-bold">
+            {recommendation}
+          </p>
         </div>
       )}
     </div>
