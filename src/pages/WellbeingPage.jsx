@@ -11,7 +11,7 @@ const WellbeingPage = () => {
       <ProfileBanner />
       <div className="overflow-hidden overflow-y-scroll flex-grow no-scrollbar">
         <Calendar />
-        <div className="my-8 md:mx-6">
+        <div className="my-8">
           <div className="text-center font-bold">
             <UserHealthInfo />
           </div>
