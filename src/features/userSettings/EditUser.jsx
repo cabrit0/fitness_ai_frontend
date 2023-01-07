@@ -1,12 +1,14 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 const EditUser = () => {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [sexo, setSexo] = useState("");
-  const [peso, setPeso] = useState("");
-  const [altura, setAltura] = useState("");
-  const [idade, setIdade] = useState("");
+  const user = useSelector((state) => state.login.user.foundUser);
+  const [username, setUsername] = useState(user.username);
+  const [email, setEmail] = useState(user.email);
+  const [sexo, setSexo] = useState(user.sexo);
+  const [peso, setPeso] = useState(user.peso);
+  const [altura, setAltura] = useState(user.altura);
+  const [idade, setIdade] = useState(user.idade);
 
   return (
     <div className="py-8">
