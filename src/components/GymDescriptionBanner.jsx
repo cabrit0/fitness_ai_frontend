@@ -17,8 +17,7 @@ const GymDescriptionBanner = () => {
         </div>
         <div className="flex justify-center mt-4">
           <button
-            className="bg-gray-600 py-1 px-4 text-sm rounded-full text-white mr-4 transition-transform duration-200 transform hover:-
-translate-y-0.5 hover:scale-110"
+            className="bg-gray-600 py-1 px-4 text-sm rounded-full text-white mr-4 transition-transform duration-200 transform hover:-translate-y-0.5 hover:scale-110"
           >
             Mais Informação
           </button>

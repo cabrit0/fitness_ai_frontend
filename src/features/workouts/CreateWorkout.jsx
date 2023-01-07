@@ -98,7 +98,7 @@ const CreateWorkout = () => {
                 Nome:
               </label>
               <input
-                className="border opacity-70 h-8 focus:opacity-100 rounded-lg p-2 w-full"
+                className="border opacity-70 h-8 focus:opacity-100 rounded-lg p-2 w-full transition-all duration-300 ease-in-out focus:scale-105"
                 type="text"
                 value={name}
                 onChange={(event) => setName(event.target.value)}
@@ -107,7 +107,7 @@ const CreateWorkout = () => {
                 Descrição:
               </label>
               <textarea
-                className="border opacity-70 h-12 focus:opacity-100 rounded-lg p-2 w-full"
+                className="border opacity-70 h-12 focus:opacity-100 rounded-lg p-2 w-full transition-all duration-300 ease-in-out focus:scale-105"
                 value={description}
                 onChange={(event) => setDescription(event.target.value)}
               ></textarea>
@@ -127,7 +127,7 @@ const CreateWorkout = () => {
                 Number of reps:
               </label>
               <input
-                className="shadow appearance-none border opacity-70 h-8 focus:opacity-100 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border opacity-70 h-8 focus:opacity-100 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline transition-all duration-300 ease-in-out focus:scale-105"
                 type="number"
                 value={reps}
                 onChange={(event) => setReps(event.target.value)}

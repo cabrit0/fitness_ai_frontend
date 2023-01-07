@@ -54,6 +54,16 @@ const MacronutrientTracker = () => {
       <h2 className="text-2xl font-bold text-gray-100 my-4 text-center">
         Tracker de Nutrientes e Atividade
       </h2>
+      {recommendation && (
+        <div className="py-2 bg-gray-700  rounded-2xl">
+          <h2 className="text-lg font-bold text-center text-gray-200 mb-2">
+            Recomendação de macronutrientes:
+          </h2>
+          <p className="text-gray-400 text-lg text-center font-bold">
+            {recommendation}
+          </p>
+        </div>
+      )}
       <form className="flex flex-col md:flex-row md:justify-center text-center items-center">
         <div className="items-center md:mx-20">
           <label
@@ -63,7 +73,7 @@ const MacronutrientTracker = () => {
             Fator de atividade:
           </label>
           <select
-            className="w-full bg-gray-600 border-none hover:text-gray-100 text-gray-300 px-6 py-2  rounded-2xl shadow-xl leading-tight focus:outline-none focus:shadow"
+            className="transition-all duration-300 ease-in-out focus:scale-105 w-full bg-gray-600 border-none hover:text-gray-100 text-gray-300 px-6 py-2 rounded-2xl shadow-xl leading-tight focus:outline-none focus:shadow"
             value={activityFactor}
             onChange={(e) => setActivityFactor(e.target.value)}
           >
@@ -80,7 +90,7 @@ const MacronutrientTracker = () => {
             Objetivo:
           </label>
           <select
-            className="w-full bg-gray-600 border-none hover:text-gray-100 text-gray-300 px-6 py-2  rounded-2xl shadow-xl leading-tight focus:outline-none focus:shadow"
+            className="transition-all duration-300 ease-in-out focus:scale-105 w-full bg-gray-600 border-none hover:text-gray-100 text-gray-300 px-6 py-2  rounded-2xl shadow-xl leading-tight focus:outline-none focus:shadow"
             value={goal}
             onChange={(e) => setGoal(e.target.value)}
           >
@@ -98,7 +108,7 @@ const MacronutrientTracker = () => {
               Hid. Carbono (g):
             </label>
             <input
-              className="shadow-xl rounded-2xl w-28 text-center py-2 px-6 bg-gray-600 text-gray-300 hover:text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow-xl rounded-2xl w-28 text-center py-2 px-6 bg-gray-600 text-gray-300 hover:text-gray-100 transition-all duration-300 ease-in-out focus:scale-105 leading-tight focus:outline-none focus:shadow-outline"
               type="number"
               placeholder="Insira a quantidade de carboidratos consumidos"
               value={carbs}
@@ -113,7 +123,7 @@ const MacronutrientTracker = () => {
               Proteínas (g):
             </label>
             <input
-              className="shadow-xl rounded-2xl w-28 text-center py-2 px-6 bg-gray-600 text-gray-300 hover:text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow-xl rounded-2xl w-28 text-center py-2 px-6 bg-gray-600 text-gray-300 hover:text-gray-100 transition-all duration-300 ease-in-out focus:scale-105 leading-tight focus:outline-none focus:shadow-outline"
               type="number"
               placeholder="Insira a quantidade de proteínas consumidas"
               value={proteins}
@@ -128,7 +138,7 @@ const MacronutrientTracker = () => {
               Gorduras (g):
             </label>
             <input
-              className="shadow-xl rounded-2xl w-28 text-center py-2 px-6 bg-gray-600 text-gray-300 hover:text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow-xl rounded-2xl w-28 text-center py-2 px-6 bg-gray-600 text-gray-300 hover:text-gray-100 transition-all duration-300 ease-in-out focus:scale-105 leading-tight focus:outline-none focus:shadow-outline"
               type="number"
               placeholder="Insira a quantidade de gorduras consumidas"
               value={fats}
@@ -146,16 +156,6 @@ const MacronutrientTracker = () => {
           Calcular recomendação
         </button>
       </div>
-      {recommendation && (
-        <div className="py-2">
-          <h2 className="text-lg font-bold text-center text-gray-200 mb-2">
-            Recomendação de macronutrientes:
-          </h2>
-          <p className="text-gray-400 text-lg text-center font-bold">
-            {recommendation}
-          </p>
-        </div>
-      )}
     </div>
   );
 };

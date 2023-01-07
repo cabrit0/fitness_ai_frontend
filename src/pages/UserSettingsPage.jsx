@@ -1,6 +1,7 @@
 import React from "react";
 import ProfileBanner from "../UI/ProfileBanner";
 import ProfileMenu from "../components/ProfileMenu";
+import SettingsMenu from "../features/userSettings/SettingsMenu";
 
 const UserSettingsPage = () => {
   return (
@@ -8,9 +9,7 @@ const UserSettingsPage = () => {
       <ProfileBanner />
       <div className="overflow-hidden overflow-y-scroll flex-grow no-scrollbar">
         <div className="my-8">
-          <h1 className="text-white text-center font-bold">
-            Opções Meu Perfil, a ser construido...
-          </h1>
+          <SettingsMenu />
         </div>
       </div>
       <ProfileMenu className="" />
