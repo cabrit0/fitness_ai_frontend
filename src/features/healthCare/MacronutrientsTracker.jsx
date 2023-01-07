@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { refreshUser, selectCurrentUser } from "../userSettings/userSettingsSlice";
 
 const MacronutrientTracker = () => {
-  const user = useSelector((state) => state.login.user.foundUser);
+  const dispatch = useDispatch();
+ const user = useSelector((state) => state.login.user.foundUser);
   const [age, setAge] = useState(user.idade);
   const [weight, setWeight] = useState(user.peso);
   const [height, setHeight] = useState(user.altura);

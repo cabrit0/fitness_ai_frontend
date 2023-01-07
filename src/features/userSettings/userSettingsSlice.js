@@ -1,4 +1,26 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
+
+export const refreshUser = createAsyncThunk(
+  "userSettings/refreshUser",
+  async (userId) => {
+    try {
+      const response = await axios.get(
+        `https://fitness-api.onrender.com/api/v1/users/id`,
+        {
+          params: {
+            id: userId,
+          },
+        }
+      );
+      console.log(userId);
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+);
 
 const userSettingsSlice = createSlice({
   name: "userSettings",
@@ -18,8 +40,8 @@ const userSettingsSlice = createSlice({
     // searches for a user by ID
     searchUserById: (state, action) => {
       state.isLoading = true;
-      const { userId } = action.payload;
-      const user = state.users.find((user) => user.id === userId);
+      const { id } = action.payload;
+      const user = state.users.find((user) => user.id === id);
       state.currentUser = user || null;
       state.isLoading = false;
     },
@@ -51,6 +73,18 @@ const userSettingsSlice = createSlice({
       state.isLoading = true;
       const { user } = action.payload;
       state.users.push(user);
+      state.isLoading = false;
+    },
+  },
+  extraReducers: {
+    [refreshUser.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [refreshUser.fulfilled]: (state, action) => {
+      state.currentUser = action.payload;
+      state.isLoading = false;
+    },
+    [refreshUser.rejected]: (state) => {
       state.isLoading = false;
     },
   },

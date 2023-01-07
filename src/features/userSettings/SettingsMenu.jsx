@@ -14,31 +14,31 @@ const SettingsMenu = () => {
     <div>
       <div className="flex justify-around items-center text-sm mx-4 md:text-md my-3 md:px-56">
         <button
-          className="w-full  mx-1 flex items-center justify-center h-16 md:mx-6 bg-gray-200 text-gray-700 opacity-70 transition-all duration-300 ease-in-out focus:outline-none focus:shadow-outline hover:text-gray-200 hover:opacity-100 hover:bg-blue-500 font-bold py-1 px-2 my-auto rounded-xl"
+          className="w-full  mx-1 flex items-center justify-center h-12 md:mx-6 bg-gray-200 text-gray-700 opacity-70 transition-all duration-300 ease-in-out focus:outline-none focus:shadow-outline hover:text-gray-200 hover:opacity-100 hover:bg-blue-500 font-bold px-2 my-auto rounded-xl"
           onClick={() => setSelectedAction("updateUser")}
         >
           Meus dados
         </button>
         <button
-          className="w-full  mx-1 flex items-center justify-center h-16 md:mx-6 bg-gray-200 text-gray-700 opacity-70 transition-all duration-300 ease-in-out focus:outline-none focus:shadow-outline hover:text-gray-200 hover:opacity-100 hover:bg-green-700 font-bold py-1 px-2 my-auto rounded-xl"
+          className="w-full  mx-1 flex items-center justify-center h-12 md:mx-6 bg-gray-200 text-gray-700 opacity-70 transition-all duration-300 ease-in-out focus:outline-none focus:shadow-outline hover:text-gray-200 hover:opacity-100 hover:bg-green-700 font-bold px-2 my-auto rounded-xl"
           onClick={() => setSelectedAction("createNewUser")}
         >
           Criar User
         </button>
         <button
-          className="w-full  mx-1 flex items-center justify-center h-16 md:mx-6 bg-gray-200 text-gray-700 opacity-70 transition-all duration-300 ease-in-out focus:outline-none focus:shadow-outline hover:text-gray-200 hover:opacity-100 hover:bg-red-500 font-bold py-1 px-2 my-auto rounded-xl"
+          className="w-full  mx-1 flex items-center justify-center h-12 md:mx-6 bg-gray-200 text-gray-700 opacity-70 transition-all duration-300 ease-in-out focus:outline-none focus:shadow-outline hover:text-gray-200 hover:opacity-100 hover:bg-red-500 font-bold px-2 my-auto rounded-xl"
           onClick={() => setSelectedAction("deleteUser")}
         >
           Apagar User
         </button>
         <button
-          className="w-full  mx-1 flex items-center justify-center h-16 md:mx-6 bg-gray-200 text-gray-700 opacity-70 transition-all duration-300 ease-in-out focus:outline-none focus:outline hover:text-gray-200 hover:opacity-100 hover:bg-blue-500 font-bold py-1 px-2 my-auto rounded-xl"
+          className="w-full  mx-1 flex items-center justify-center h-12 md:mx-6 bg-gray-200 text-gray-700 opacity-70 transition-all duration-300 ease-in-out focus:outline-none focus:outline hover:text-gray-200 hover:opacity-100 hover:bg-blue-500 font-bold px-2 my-auto rounded-xl"
           onClick={() => setSelectedAction("searchByName")}
         >
           Procurar p/ nome
         </button>
         <button
-          className="w-full  mx-1 flex items-center justify-center h-16 md:mx-6 bg-gray-200 text-gray-700 opacity-70 transition-all duration-300 ease-in-out focus:outline-none focus:shadow-outline hover:text-gray-200 hover:opacity-100 hover:bg-blue-500 font-bold py-1 px-2 my-auto rounded-xl"
+          className="w-full  mx-1 flex items-center justify-center h-12 md:mx-6 bg-gray-200 text-gray-700 opacity-70 transition-all duration-300 ease-in-out focus:outline-none focus:shadow-outline hover:text-gray-200 hover:opacity-100 hover:bg-blue-500 font-bold px-2 my-auto rounded-xl"
           onClick={() => setSelectedAction("seeAllMyUsers")}
         >
           Meus Alunos

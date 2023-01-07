@@ -109,7 +109,7 @@ const FilterMenu = ({ exercises, onFilterChange, backButtonHandler }) => {
             onChange={handleBodyPartChange}
           >
             <option value="">
-              <IoIosBody className="w-4 h-4 text-black text-md" />
+              {/* <IoIosBody className="w-4 h-4 text-black text-md" /> */}
               Corpo
             </option>
             {bodyParts.map((bodyPart) => (
@@ -126,7 +126,7 @@ const FilterMenu = ({ exercises, onFilterChange, backButtonHandler }) => {
             onChange={handleMuscleChange}
           >
             <option value="">
-              <GiBiceps />
+              {/* <GiBiceps /> */}
               Músculo
             </option>
             {muscles.map((target) => (
@@ -143,7 +143,7 @@ const FilterMenu = ({ exercises, onFilterChange, backButtonHandler }) => {
             onChange={handleEquipmentChange}
           >
             <option value="">
-              <BiDumbbell />
+              {/* <BiDumbbell /> */}
               Equipamento
             </option>
             {equipment.map((equip) => (
