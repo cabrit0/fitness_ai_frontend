@@ -16,35 +16,35 @@ const MyUsersProfileCard = ({ user, onClose }) => {
             ×
           </button>
         </div>
-        <div className="py-3 border-b border-gray-400">
+        <div className="py-1 border-b border-gray-400">
           <label className="text-gray-300 font-bold text-lg">Função:</label>
-          <p className="text-gray-400 font-bold text-lg my-2">{user.roles}</p>
+          <p className="text-gray-400 font-bold text-lg my-1">{user.roles}</p>
         </div>
-        <div className="py-3 border-b border-gray-400">
+        <div className="py-1 border-b border-gray-400">
           <label className="text-gray-300 font-bold text-lg">Email:</label>
-          <p className="text-gray-400 font-bold text-lg my-2">{user.email}</p>
+          <p className="text-gray-400 font-bold text-lg my-1">{user.email}</p>
         </div>
-        <div className="py-3 border-b border-gray-400">
+        <div className="py-1 border-b border-gray-400">
           <label className="text-gray-300 font-bold text-lg">Idade:</label>
-          <p className="text-gray-400 font-bold text-lg my-2">{user.idade}</p>
+          <p className="text-gray-400 font-bold text-lg my-1">{user.idade}</p>
         </div>
-        <div className="py-3 border-b border-gray-400">
+        <div className="py-1 border-b border-gray-400">
           <label className="text-gray-300 font-bold text-lg">Peso:</label>
-          <p className="text-gray-400 font-bold text-lg my-2">{user.peso}</p>
+          <p className="text-gray-400 font-bold text-lg my-1">{user.peso}</p>
         </div>
-        <div className="py-3 border-b border-gray-400">
+        <div className="py-1 border-b border-gray-400">
           <label className="text-gray-300 font-bold text-lg">Altura:</label>
-          <p className="text-gray-400 font-bold text-lg my-2">{user.altura}</p>
+          <p className="text-gray-400 font-bold text-lg my-1">{user.altura}</p>
         </div>
-        <div className="py-3 border-b border-gray-400">
+        <div className="py-1 border-b border-gray-400">
           <label className="text-gray-300 font-bold text-lg">Sexo:</label>
-          <p className="text-gray-400 font-bold text-lg my-2">{user.sexo}</p>
+          <p className="text-gray-400 font-bold text-lg my-1">{user.sexo}</p>
         </div>
-        <div className="py-3 border-b border-gray-400">
+        <div className="py-1 border-b border-gray-400">
           <label className="text-gray-300 font-bold text-lg">
             Data de Assinatura:
           </label>
-          <p className="text-gray-400 font-bold text-lg my-2">
+          <p className="text-gray-400 font-bold text-lg my-1">
             {formattedDate}
           </p>
         </div>
