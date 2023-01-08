@@ -5,7 +5,7 @@ import EditUser from "./EditUser";
 import DeleteUser from "./DeleteUser";
 import SearchUserByName from "./SearchUserByName";
 import SeeAllUsers from "./SeeAllUsers";
-import RequestPT from "./RequestPT";
+/* import RequestPT from "./RequestPT"; */
 
 const SettingsMenu = () => {
   const [selectedAction, setSelectedAction] = useState("updateUser");
@@ -50,13 +50,13 @@ const SettingsMenu = () => {
         {selectedAction === "searchByName" && <SearchUserByName />}
         {selectedAction === "seeAllMyUsers" && <SeeAllUsers />}
         {selectedAction === "deleteUser" && <DeleteUser />}
-        {selectedAction === "contactPT" && <RequestPT />}
+        {/* {selectedAction === "contactPT" && <RequestPT />}
         <button
           className="w-18% font-bold py-1 px-4 rounded-xl mx-auto my-6 flex items-center justify-end bg-gray-200 text-gray-700 opacity-70 transition-all hover:-translate-y-0.5 hover:scale-110 duration-300 ease-in-out focus:outline-none focus:shadow-outline hover:opacity-80 hover:bg-amber-400"
           onClick={() => setSelectedAction("contactPT")}
         >
           Quero um Personal Trainer
-        </button>
+        </button> */}
       </div>
     </div>
   );

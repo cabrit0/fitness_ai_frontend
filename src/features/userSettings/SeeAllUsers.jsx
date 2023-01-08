@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import MyUsersCard from "./MyUsersCard";
+import MyUsersProfileCard from "./MyUsersProfileCard";
 import Loading from "../../UI/Loading";
 import { fetchAllUsers } from "./userSettingsSlice";
 
@@ -8,6 +9,17 @@ const SeeAllUsers = () => {
   const dispatch = useDispatch();
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [showUsers, setShowUsers] = useState(true);
+  const [selectedUser, setSelectedUser] = useState({});
+
+  const handleShowProfile = (user) => {
+    setShowUsers(false);
+    setSelectedUser(user);
+  };
+
+  const handleCloseProfile = () => {
+    setShowUsers(true);
+  };
 
   //console.log(users)
 
@@ -22,10 +34,20 @@ const SeeAllUsers = () => {
 
   return (
     <div className="flex flex-wrap py-8 justify-center">
-      {isLoading ? (
-        <Loading />
+      {showUsers ? (
+        isLoading ? (
+          <Loading />
+        ) : (
+          users.map((user) => (
+            <MyUsersCard
+              key={user._id}
+              user={user}
+              onShowProfile={handleShowProfile}
+            />
+          ))
+        )
       ) : (
-        users.map((user) => <MyUsersCard key={user._id} user={user} />)
+        <MyUsersProfileCard user={selectedUser} onClose={handleCloseProfile} />
       )}
     </div>
   );

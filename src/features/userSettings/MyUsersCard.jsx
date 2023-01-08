@@ -1,6 +1,6 @@
 import React from "react";
 
-const MyUsersCard = ({ user }) => {
+const MyUsersCard = ({ user, onShowProfile }) => {
   //console.log(user);
 
   // generate a random color for the placeholder image
@@ -16,27 +16,30 @@ const MyUsersCard = ({ user }) => {
 
   return (
     <div className="">
-      <div class="card bg-white m-4 shadow-md rounded-lg overflow-hidden">
+      <div className="card bg-white m-4 shadow-md rounded-lg overflow-hidden">
         {!user.image ? (
-          <div class="card-img h-64 bg-gray-300">
+          <div className="card-img h-64 bg-gray-300">
             <div
-              class="text-8xl font-bold text-center text-white leading-none mt-16 opacity-75"
+              className="text-8xl font-bold text-center text-white leading-none mt-16 opacity-75"
               style={{ color: color }}
             >
               {user.username[0].toUpperCase()}
             </div>
           </div>
         ) : (
-          <div class="card-img h-64 bg-gray-300">
+          <div className="card-img h-64 bg-gray-300">
             <img src={user.image} alt={user.username} />
           </div>
         )}
-        <div class="card-info font-bold py-2">
-          <h3 class="text-2xl font-bold text-gray-800 my-2">{user.username}</h3>
-          <p class="text-gray-700 text-base my-0.5">{user.roles}</p>
-          <p class="text-gray-700 text-base my-0.5">idade: {user.idade}</p>
-          <p class="text-gray-700 text-base my-0.5">{user.sexo}</p>
-          <button class="card-button bg-gray-300 text-gray-800 font-bold my-2 py-2 px-4 rounded-full">
+        <div className="card-info font-bold py-2">
+          <h3 className="text-2xl font-bold text-gray-800 my-2">{user.username}</h3>
+          <p className="text-gray-700 text-base my-0.5">{user.roles}</p>
+          <p className="text-gray-700 text-base my-0.5">idade: {user.idade}</p>
+          <p className="text-gray-700 text-base my-0.5">{user.sexo}</p>
+          <button
+            className="card-button bg-gray-300 opacity-70 text-gray-800 font-bold my-2 py-1 px-4 rounded-full hover:opacity-100 hover:scale-105 transition ease-in-out duration-300"
+            onClick={() => onShowProfile(user)}
+          >
             Ver Perfil
           </button>
         </div>
