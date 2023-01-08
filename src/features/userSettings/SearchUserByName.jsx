@@ -25,7 +25,7 @@ const SearchByName = () => {
 
   const handleSearch = (event) => {
     const inputValue = event.target.value;
-    console.log(inputValue);
+    //console.log(inputValue);
     if (inputValue === "") {
       setUsers(originalUsers);
     } else {

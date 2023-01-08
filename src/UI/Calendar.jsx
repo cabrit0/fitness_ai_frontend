@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { selectUserCalendarWorkouts } from "../features/calendar/calendarSlice";
 import moment from "moment";
 
 function Calendar() {
   // eslint-disable-next-line no-unused-vars
+  const Calendarorkouts = useSelector(selectUserCalendarWorkouts);
+  console.log(Calendarorkouts);
   const [currentDate, setCurrentDate] = useState(moment());
   const [days, setDays] = useState([]);
 

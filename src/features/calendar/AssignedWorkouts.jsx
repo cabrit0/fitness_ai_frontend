@@ -30,6 +30,7 @@ const AssignedWorkouts = () => {
       setFetchedWorkouts(workouts);
     };
     fetchData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [assignedWorkouts]);
 
   // Function to open the modal and set the workout id

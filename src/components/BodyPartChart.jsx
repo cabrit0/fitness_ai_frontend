@@ -43,7 +43,7 @@ const EquipmentBarChart = () => {
           key={data.bodyPart}
           className="h-full flex my-0.5 mx-3 md:mx-8 hover:opacity-90"
         >
-          <div className="w-full h-full relative bg-gray-400 rounded-full overflow-hidden">
+          <div className="w-full h-8 relative bg-gray-400 rounded-full overflow-hidden">
             <div
               style={{ width: `${data.percentage}%` }}
               className="bg-blue-500 h-full rounded-full absolute left-0 top-0 transition duration-500 ease-in-out"
