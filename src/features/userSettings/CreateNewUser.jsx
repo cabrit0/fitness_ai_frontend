@@ -1,23 +1,19 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
-import { updateUser, refreshUser } from "./userSettingsSlice";
 
 const CreateUser = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [roles, setRoles] = useState("");
+  const [roles, setRoles] = useState("Utilizador");
+  const [sexo, setSexo] = useState("Masculino");
   const [altura, setAltura] = useState("");
   const [peso, setPeso] = useState("");
-  const [sexo, setSexo] = useState("");
   const [idade, setIdade] = useState("");
   const [passwordValid, setPasswordValid] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
   const [requestCompleted, setRequestCompleted] = useState(false);
-
-  const dispatch = useDispatch();
 
   const createNewUser = async (e) => {
     e.preventDefault();
@@ -46,6 +42,8 @@ const CreateUser = () => {
       sexo: sexo,
       idade: idade,
     };
+
+    console.log(userData);
 
     try {
       const response = await axios.post(

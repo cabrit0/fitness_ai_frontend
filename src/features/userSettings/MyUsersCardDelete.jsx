@@ -1,6 +1,6 @@
 import React from "react";
 
-const MyUsersCard = ({ user, onShowProfile, buttonText, buttonColor }) => {
+const MyUsersCard = ({ user, onDeleteClick, buttonText, buttonColor }) => {
   //console.log(user);
 
   // generate a random color for the placeholder image
@@ -51,7 +51,7 @@ const MyUsersCard = ({ user, onShowProfile, buttonText, buttonColor }) => {
         <p className="text-gray-700 text-base my-0.5">{user.sexo}</p>
         <button
           className={`card-button ${buttonColor} opacity-70 text-gray-200 font-bold my-2 py-1 px-4 rounded-2xl hover:opacity-100 hover:scale-105 transition ease-in-out duration-300`}
-          onClick={() => onShowProfile(user)}
+          onClick={() => onDeleteClick(user)}
         >
           {buttonText}
         </button>

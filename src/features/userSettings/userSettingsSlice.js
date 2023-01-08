@@ -1,6 +1,22 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+export const deleteUser = createAsyncThunk(
+  "userSettings/deleteUser",
+  async (userId) => {
+    try {
+      await axios.delete(`https://fitness-api.onrender.com/api/v1/users`, {
+        params: {
+          id: userId,
+        },
+      });
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+);
+
 export const fetchAllUsers = createAsyncThunk(
   "userSettings/fetchAllUsers",
   async () => {
@@ -111,7 +127,6 @@ export const {
   searchUserById,
   searchUserByName,
   updateUser,
-  deleteUser,
   createNewUser,
 } = userSettingsSlice.actions;
 

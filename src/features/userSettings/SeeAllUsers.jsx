@@ -47,6 +47,8 @@ const SeeAllUsers = () => {
                 key={user._id}
                 user={user}
                 onShowProfile={handleShowProfile}
+                buttonText="Ver Perfil"
+                buttonColor="bg-blue-600"
               />
             ))
           )
