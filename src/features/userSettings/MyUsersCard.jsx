@@ -15,10 +15,9 @@ const MyUsersCard = ({ user, onShowProfile }) => {
   }
 
   return (
-    <div className="">
       <div className="card bg-white m-4 shadow-md rounded-lg overflow-hidden">
         {!user.image ? (
-          <div className="card-img h-64 bg-gray-300">
+          <div className="card-img h-64">
             <div
               className="text-8xl font-bold text-center text-white leading-none mt-16 opacity-75"
               style={{ color: color }}
@@ -44,7 +43,6 @@ const MyUsersCard = ({ user, onShowProfile }) => {
           </button>
         </div>
       </div>
-    </div>
   );
 };
 

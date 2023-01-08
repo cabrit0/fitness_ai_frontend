@@ -115,7 +115,7 @@
   display: block;
   width: 100%;
   height: 100%;
-  background: rgba(116, 155, 238, 0.533);
+  background: rgba(116, 155, 238, 0.299);
   z-index: 2;
   transition: 0.5s;
 }
