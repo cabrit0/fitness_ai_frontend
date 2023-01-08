@@ -121,7 +121,7 @@ const ProfileExercises = () => {
                 >
                   Anterior
                 </button>
-                <p className="text-gray-300 font-bold text-xl">
+                <p className="text-gray-300 font-bold text-sm md:text-lx">
                   Página <span className="text-blue-600">{page}</span> - <span className="text-blue-600">{maxPages}</span>
                 </p>
                 <button
