@@ -34,7 +34,7 @@ const EquipmentBarChart = () => {
   }, [workouts]);
 
   return (
-    <div className="w-full py-2 my-6 h-36 opacity-80 flex flex-col justify-between hover:90">
+    <div className="w-full py-2 mb-20 lg:mb-32 my-6 h-36 opacity-80 flex flex-col justify-center hover:90">
       <h4 className="text-gray-300 text-center text-sm font-bold">
         Por equipamento
       </h4>
@@ -48,7 +48,7 @@ const EquipmentBarChart = () => {
               style={{ width: `${data.percentage}%` }}
               className="bg-blue-500 h-full rounded-full absolute left-0 top-0 transition duration-500 ease-in-out"
             ></div>
-            <div className="text-gray-800 text-sm md:text-md lg:text-lg font-bold w-full flex justify-between px-3 py-1 transition duration-500 ease-in-out ">
+            <div className="text-gray-800 font-bold w-full text-sm md:text-md lg:text-lg flex justify-between px-3 py-1 transition duration-500 ease-in-out ">
               <div className="text-gray-800 font-bold z-50">
                 {data.equipment}
               </div>

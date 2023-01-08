@@ -5,7 +5,6 @@ import {
   viewAllExercises,
   selectRandomExercises,
   selectIsLoading,
-  selectExercises,
 } from "./exercisesSlice";
 import ExerciseCard from "./ExerciseCard";
 import FilterMenu from "../../UI/FilterMenu";

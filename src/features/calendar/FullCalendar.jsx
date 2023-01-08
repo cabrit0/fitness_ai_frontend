@@ -16,6 +16,7 @@ function FullCalendar() {
   const id = useSelector((state) => state.login.user.foundUser._id);
   const [dateValue, setDateValue] = useState(new Date());
   const [showModal, setShowModal] = useState(false);
+  // eslint-disable-next-line no-unused-vars
   const [currentWorkout, setCurrentWorkout] = useState(null);
   const userWorkouts = useSelector(selectWorkouts);
   const [assignedWorkouts, setAssignedWorkouts] = useState([]);
@@ -29,6 +30,7 @@ function FullCalendar() {
       setAssignedWorkouts(workouts);
     };
     fetchData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [assignedWorkoutsCalendar]);
 
   //console.log(assignedWorkouts);
