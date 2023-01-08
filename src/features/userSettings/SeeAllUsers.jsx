@@ -33,22 +33,30 @@ const SeeAllUsers = () => {
   }, [dispatch]);
 
   return (
-    <div className="flex flex-wrap py-8 justify-center">
-      {showUsers ? (
-        isLoading ? (
-          <Loading />
+    <div className="py-8">
+      <h2 className="text-gray-300 text-lg font-bold text-center">
+        Meus Utilizadores
+      </h2>
+      <div className="flex flex-wrap py-8 justify-center">
+        {showUsers ? (
+          isLoading ? (
+            <Loading />
+          ) : (
+            users.map((user) => (
+              <MyUsersCard
+                key={user._id}
+                user={user}
+                onShowProfile={handleShowProfile}
+              />
+            ))
+          )
         ) : (
-          users.map((user) => (
-            <MyUsersCard
-              key={user._id}
-              user={user}
-              onShowProfile={handleShowProfile}
-            />
-          ))
-        )
-      ) : (
-        <MyUsersProfileCard user={selectedUser} onClose={handleCloseProfile} />
-      )}
+          <MyUsersProfileCard
+            user={selectedUser}
+            onClose={handleCloseProfile}
+          />
+        )}
+      </div>
     </div>
   );
 };

@@ -26,6 +26,11 @@ const CreateUser = () => {
       setErrorMessage("As senhas não correspondem.");
       setPasswordValid(false);
       return;
+    }
+    if (password.length < 8) {
+      setErrorMessage("A senha deve ter pelo menos 8 caracteres.");
+      setPasswordValid(false);
+      return;
     } else {
       setErrorMessage("");
       setPasswordValid(true);
@@ -198,38 +203,41 @@ const CreateUser = () => {
             />
           </div>
         </div>
-        <div className="flex justify-between">
-          <div className="mb-4 mr-2">
+        <div className="flex">
+          <div className="mb-4 mr-1">
             <label
               className="block ml-4 text-gray-300 text-sm font-bold mb-2"
               htmlFor="roles"
             >
               Função
             </label>
-            <input
+            <select
               className="w-full bg-gray-600 border-none hover:text-gray-100 text-gray-300 px-6 py-2 rounded-2xl shadow-xl focus:scale-105 transition-all duration-300 ease-in-out"
               id="roles"
-              type="text"
-              placeholder="Função a desempenhar"
               value={roles}
               onChange={(event) => setRoles(event.target.value)}
-            />
+            >
+              <option value="Utilizador">Utilizador</option>
+              <option value="Personal Trainer">Personal Trainer</option>
+              <option value="Admin">Admin</option>
+            </select>
           </div>
-          <div className="mb-4 ml-2">
+          <div className="mb-4 ml-1">
             <label
               className="block ml-4 text-gray-300 text-sm font-bold mb-2"
               htmlFor="sexo"
             >
               Sexo
             </label>
-            <input
+            <select
               className="w-full bg-gray-600 border-none hover:text-gray-100 text-gray-300 px-6 py-2 rounded-2xl shadow-xl focus:scale-105 transition-all duration-300 ease-in-out"
               id="sexo"
-              type="text"
-              placeholder="Sexo (Masculino ou Feminino)"
               value={sexo}
               onChange={(event) => setSexo(event.target.value)}
-            />
+            >
+              <option value="Masculino">Masculino</option>
+              <option value="Feminino">Feminino</option>
+            </select>
           </div>
         </div>
         <div className="flex items-center mt-4">

@@ -8,7 +8,7 @@ const MyUsersProfileCard = ({ user, onClose }) => {
     new Date(user.createdAt)
   );
   return (
-    <div className="fixed inset-0 flex items-center justify-center px-4 py-6 bg-gray-900 bg-opacity-75">
+    <div className="fixed inset-0 flex items-center justify-center px-12 py-6 bg-gray-900 bg-opacity-75">
       <div className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 bg-gray-600 rounded-lg shadow-xl p-6">
         <div className="flex items-center justify-between pb-3">
           <h2 className="text-2xl font-bold text-gray-200">{user.username}</h2>
