@@ -86,7 +86,8 @@
 }
 
 .react-calendar__month-view__days__day--weekend {
-  color: rgb(0, 140, 255);
+  color: rgba(6, 63, 169, 0.888);
+  font-weight: bold;
 }
 
 .calendar-tile-workout {
