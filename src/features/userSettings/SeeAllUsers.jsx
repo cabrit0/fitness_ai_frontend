@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import MyUsersCard from "./MyUsersCard";
 import Loading from "../../UI/Loading";
 import { fetchAllUsers } from "./userSettingsSlice";
@@ -7,7 +7,7 @@ import { fetchAllUsers } from "./userSettingsSlice";
 const SeeAllUsers = () => {
   const dispatch = useDispatch();
   const [users, setUsers] = useState([]);
-  const [isLoading, setIsLoading] = useState(true); 
+  const [isLoading, setIsLoading] = useState(true);
 
   //console.log(users)
 
@@ -15,14 +15,14 @@ const SeeAllUsers = () => {
     dispatch(fetchAllUsers())
       .then((response) => {
         setUsers(response.payload);
-        setIsLoading(false); 
+        setIsLoading(false);
       })
       .catch((error) => console.error(error));
   }, [dispatch]);
 
   return (
     <div className="flex flex-wrap py-8 justify-center">
-      {isLoading ? ( 
+      {isLoading ? (
         <Loading />
       ) : (
         users.map((user) => <MyUsersCard key={user._id} user={user} />)
