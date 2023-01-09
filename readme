@@ -1,15 +1,15 @@
-# React Fitness4U App
+# Fitness4U App
 
 ## Description
 
-Welcome to the React Fitness App! This app is designed to help you reach your fitness goals by providing a platform for creating workouts, assigning exercises from an external database, and tracking your progress in a calendar. It also offers a way to calculate your body type and daily macronutrient intake based on your specific objectives. 
+Welcome to the Fitness4U App! This app is designed to help you reach your fitness goals by providing a platform for creating workouts, assigning exercises from an external database, and tracking your progress in a calendar. It also offers a way to calculate your body type and daily macronutrient intake based on your specific objectives. 
 
-With different user roles available (Utilizadores, Personal Trainers, and Admin), each with their own options for creating and accessing user information, the React Fitness App is versatile and user-friendly. Built with React, Node.js, Express.js, MongoDB, ReduxToolkit and Tailwind, this app is simple yet powerful.
+With different user roles available (Utilizadores, Personal Trainers, and Admin), each with their own options for creating and accessing user information, the Fitness4U App is versatile and user-friendly. Built with React, Node.js, Express.js, MongoDB, ReduxToolkit and Tailwind, this app is simple yet powerful.
 
 
 ## Usage
 
-To use the React Fitness App, follow these steps:
+To use the Fitness4U App, follow these steps:
 
 1. Create an account or log in with an existing account.
 2. Create a new workout by clicking on the "Create Workout" button.
@@ -19,4 +19,4 @@ To use the React Fitness App, follow these steps:
 
 ## Credits
 
-- Exercise database provided by [Exercise API](https://rapidapi.com/justin-WFnsXH_t6/api/exercisedb)
+- Exercise database provided by [ExerciseDB RapidAPI](https://rapidapi.com/justin-WFnsXH_t6/api/exercisedb)
