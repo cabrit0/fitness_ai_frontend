@@ -13,7 +13,7 @@ const MacronutrientTracker = () => {
   const [carbs, setCarbs] = useState(0);
   const [proteins, setProteins] = useState(0);
   const [fats, setFats] = useState(0);
-  const [goal, setGoal] = useState("weightLoss");
+  const [goal, setGoal] = useState("Perder Peso");
   const [recommendation, setRecommendation] = useState("");
 
   const calculateBMR = () => {
@@ -34,9 +34,9 @@ const MacronutrientTracker = () => {
     let bmr = calculateBMR();
     let tdee = calculateTDEE(bmr);
     let calories;
-    if (goal === "weightLoss") {
+    if (goal === "Perder Peso") {
       calories = tdee - 500;
-    } else if (goal === "maintenance") {
+    } else if (goal === "Manter Peso") {
       calories = tdee;
     } else {
       calories = tdee + 500;
@@ -96,9 +96,9 @@ const MacronutrientTracker = () => {
             value={goal}
             onChange={(e) => setGoal(e.target.value)}
           >
-            <option value="weightLoss">Perder peso</option>
-            <option value="maintenance">Manter de peso</option>
-            <option value="weightGain">Ganhar peso</option>
+            <option value="Perder Peso">Perder peso</option>
+            <option value="Manter Peso">Manter de peso</option>
+            <option value="Ganhar Peso">Ganhar peso</option>
           </select>
         </div>
         <div className="text-center md:mx-20">
