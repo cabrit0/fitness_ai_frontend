@@ -22,6 +22,7 @@ const EditUser = () => {
     const userData = {
       id: id,
       username: username,
+      email: email,
       roles: user.roles,
       active: user.active,
       personalTrainer: user.personalTrainer,
