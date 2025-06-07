@@ -111,7 +111,6 @@ function FullCalendar() {
       console.error("Erro ao atribuir workout ao calendário:", error);
     }
   };
-  };
 
   const CalendarWorkoutCards = ({ userWorkouts, assignWorkout }) => {
     const [displayWorkouts, setDisplayWorkouts] = useState(true);

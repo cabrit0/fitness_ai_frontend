@@ -31,7 +31,7 @@ const CreateWorkout = () => {
     setExercises([...exercises, exercise]);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     const data = {
