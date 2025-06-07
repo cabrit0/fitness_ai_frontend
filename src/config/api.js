@@ -9,7 +9,7 @@ const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3500';
 // Endpoints da API
 export const API_ENDPOINTS = {
   // Autenticação
-  LOGIN: `${API_BASE_URL}/api/v1/auth/login`,
+  LOGIN: `${API_BASE_URL}/api/v1/auth`,
   REFRESH: `${API_BASE_URL}/api/v1/auth/refresh`,
   LOGOUT: `${API_BASE_URL}/api/v1/auth/logout`,
 
