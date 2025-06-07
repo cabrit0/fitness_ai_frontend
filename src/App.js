@@ -10,21 +10,24 @@ import WorkoutsPage from "./pages/WorkoutsPage";
 import CalendarioPage from "./pages/CalendarioPage";
 import WellbeingPage from "./pages/WellbeingPage";
 import UserSettings from "./pages/UserSettingsPage";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 function App() {
   return (
-    <Provider store={store}>
-      <Router>
-        <Routes>
-          <Route exact path="/" element={<HomePage />} />
-          <Route path="/user" element={<UserProfilePage />} />
-          <Route path="/user/workouts" element={<WorkoutsPage />} />
-          <Route path="/user/exercises" element={<CalendarioPage />} />
-          <Route path="/user/wellbeing" element={<WellbeingPage />} />
-          <Route path="/user/settings" element={<UserSettings />} />
-        </Routes>
-      </Router>
-    </Provider>
+    <ErrorBoundary>
+      <Provider store={store}>
+        <Router>
+          <Routes>
+            <Route exact path="/" element={<HomePage />} />
+            <Route path="/user" element={<UserProfilePage />} />
+            <Route path="/user/workouts" element={<WorkoutsPage />} />
+            <Route path="/user/exercises" element={<CalendarioPage />} />
+            <Route path="/user/wellbeing" element={<WellbeingPage />} />
+            <Route path="/user/settings" element={<UserSettings />} />
+          </Routes>
+        </Router>
+      </Provider>
+    </ErrorBoundary>
   );
 }
 

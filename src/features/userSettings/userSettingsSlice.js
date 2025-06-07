@@ -1,11 +1,12 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { API_ENDPOINTS } from "../../config/api";
 
 export const deleteUser = createAsyncThunk(
   "userSettings/deleteUser",
   async (userId) => {
     try {
-      await axios.delete(`https://fitness-api.onrender.com/api/v1/users`, {
+      await axios.delete(API_ENDPOINTS.USERS, {
         params: {
           id: userId,
         },
@@ -21,10 +22,7 @@ export const fetchAllUsers = createAsyncThunk(
   "userSettings/fetchAllUsers",
   async () => {
     try {
-      const response = await axios.get(
-        `https://fitness-api.onrender.com/api/v1/users`
-      );
-      //console.log(response)
+      const response = await axios.get(API_ENDPOINTS.USERS);
       return response.data;
     } catch (error) {
       console.error(error);
@@ -37,14 +35,11 @@ export const refreshUser = createAsyncThunk(
   "userSettings/refreshUser",
   async (userId) => {
     try {
-      const response = await axios.get(
-        `https://fitness-api.onrender.com/api/v1/users/id`,
-        {
-          params: {
-            id: userId,
-          },
-        }
-      );
+      const response = await axios.get(API_ENDPOINTS.USER_BY_ID, {
+        params: {
+          id: userId,
+        },
+      });
       console.log(userId);
       return response.data;
     } catch (error) {

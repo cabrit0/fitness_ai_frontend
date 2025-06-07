@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginRequest, loginSuccess, loginError } from "./loginSlice";
 import { setCurrentPage } from "../../pages/pagesSlice";
 import Loading from "../../UI/Loading";
+import { API_ENDPOINTS, getDefaultHeaders } from "../../config/api";
 
 const Login = (props) => {
   const navigate = useNavigate();
@@ -43,32 +44,35 @@ const Login = (props) => {
     }
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     dispatch(loginRequest());
-    //loginRequest.loading = false;
-    console.log(loading);
 
-    axios
-      .post("https://fitness-api.onrender.com/api/v1/auth", {
-        email,
-        password,
-      })
-      .then((response) => {
-        // Redirect the user to the home page or display a success message
-        //console.log(response);
-        dispatch(loginSuccess(response.data));
-        setIsLoginModalOpen((prev) => !prev);
-        dispatch(setCurrentPage("home"));
-        navigate("/user");
-      })
-      .catch((error) => {
-        setError(error);
-        //console.log(error.message);
-        setError("Credenciais inválidas ou user não encontrado");
-        dispatch(loginError(error.message));
-      });
+    try {
+      const response = await axios.post(
+        API_ENDPOINTS.LOGIN,
+        {
+          email,
+          password,
+        },
+        {
+          headers: getDefaultHeaders()
+        }
+      );
+
+      // Redirect the user to the home page or display a success message
+      dispatch(loginSuccess(response.data));
+      setIsLoginModalOpen((prev) => !prev);
+      dispatch(setCurrentPage("home"));
+      navigate("/user");
+    } catch (error) {
+      console.error("Erro no login:", error);
+      const errorMessage = error.response?.data?.message ||
+                          "Credenciais inválidas ou utilizador não encontrado";
+      setError(errorMessage);
+      dispatch(loginError(errorMessage));
+    }
   };
 
   return (

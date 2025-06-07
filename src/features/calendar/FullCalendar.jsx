@@ -74,7 +74,7 @@ function FullCalendar() {
     setShowModal(false);
   };
 
-  const assignWorkout = (workout) => {
+  const assignWorkout = async (workout) => {
     // Assign workout to the clicked day here
     console.log(dateValue, workout);
 
@@ -84,33 +84,33 @@ function FullCalendar() {
       calendarDate: dateValue.toISOString(),
     };
 
-    axios
-      .post(
-        "https://fitness-api.onrender.com/api/v1/user/calendarOptions/assignWorkout",
+    try {
+      const { API_ENDPOINTS, getAuthHeaders } = await import("../../config/api");
+
+      const response = await axios.post(
+        API_ENDPOINTS.CALENDAR.ASSIGN_WORKOUT,
         data,
         {
-          headers: {
-            Authorization: "Bearer " + userAccessToken,
-          },
+          headers: getAuthHeaders(userAccessToken),
         }
-      )
-      .then((response) => {
-        console.log(response);
-        dispatch(
-          createUserWorkout({
-            calendarDate: dateValue.toISOString(),
-            workoutId: workout._id,
-          })
-        );
-        setAssignedWorkouts([
-          ...assignedWorkouts,
-          { calendarDate: dateValue.toISOString(), workoutId: workout._id },
-        ]);
-        closeModal();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      );
+
+      console.log(response);
+      dispatch(
+        createUserWorkout({
+          calendarDate: dateValue.toISOString(),
+          workoutId: workout._id,
+        })
+      );
+      setAssignedWorkouts([
+        ...assignedWorkouts,
+        { calendarDate: dateValue.toISOString(), workoutId: workout._id },
+      ]);
+      closeModal();
+    } catch (error) {
+      console.error("Erro ao atribuir workout ao calendário:", error);
+    }
+  };
   };
 
   const CalendarWorkoutCards = ({ userWorkouts, assignWorkout }) => {

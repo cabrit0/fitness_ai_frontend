@@ -50,31 +50,30 @@ const CreateWorkout = () => {
       reps,
     };
 
-    axios
-      .post(
-        "https://fitness-api.onrender.com/api/v1/user/workouts&exercises",
+    try {
+      const { API_ENDPOINTS, getAuthHeaders } = await import("../../config/api");
+
+      const response = await axios.post(
+        API_ENDPOINTS.WORKOUTS,
         data,
         {
-          headers: {
-            Authorization: "Bearer " + userAccessToken,
-          },
+          headers: getAuthHeaders(userAccessToken),
         }
-      )
-      .then((response) => {
-        // do something with the response here, like dispatch an action to update the state
-        dispatch(
-          createWorkout({
-            workout: { id, name, description, exercises, reps },
-          })
-        );
-        console.log(response);
-        setMessage("Workout Criado com sucesso!");
-        setIsCreated(true);
-      })
-      .catch((error) => {
-        // handle the error here
-        console.log(error);
-      });
+      );
+
+      // do something with the response here, like dispatch an action to update the state
+      dispatch(
+        createWorkout({
+          workout: { id, name, description, exercises, reps },
+        })
+      );
+      console.log(response);
+      setMessage("Workout Criado com sucesso!");
+      setIsCreated(true);
+    } catch (error) {
+      console.error("Erro ao criar workout:", error);
+      setMessage("Erro ao criar workout");
+    }
   };
 
   const toggleModal = () => {

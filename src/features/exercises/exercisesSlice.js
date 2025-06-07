@@ -1,15 +1,31 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { API_ENDPOINTS, getAuthHeaders } from "../../config/api";
 
 export const fetchExercises = createAsyncThunk(
   "exercises/fetchExercises",
   async (args, thunkAPI) => {
-    const response = await axios.get(
-      "https://fitness-api.onrender.com/api/v1/exercises/allExercises"
-    );
-    const randomExercises = getRandomExercises(response.data, 3);
-    thunkAPI.dispatch(setRandomExercises(randomExercises));
-    return response.data;
+    try {
+      const state = thunkAPI.getState();
+      const userAccessToken = state.login.user?.accessToken;
+
+      if (!userAccessToken) {
+        throw new Error("Utilizador não autenticado");
+      }
+
+      const response = await axios.get(
+        API_ENDPOINTS.EXERCISES.ALL,
+        {
+          headers: getAuthHeaders(userAccessToken)
+        }
+      );
+
+      const randomExercises = getRandomExercises(response.data, 3);
+      thunkAPI.dispatch(setRandomExercises(randomExercises));
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
 );
 

@@ -3,6 +3,7 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { selectWorkouts, seeAllWorkouts } from "./WorkoutsSlice";
 import Loading from "../../UI/Loading";
+import { API_ENDPOINTS, getAuthHeaders } from "../../config/api";
 
 const SeeAllWorkouts = () => {
   const dispatch = useDispatch();
@@ -13,26 +14,18 @@ const SeeAllWorkouts = () => {
 
   //console.log(id, userAccessToken, workouts);
 
-  //https://fitness-api.onrender.com
-  const serverWorkouts = () => {
-    axios
-      .get(
-        `https://fitness-api.onrender.com/api/v1/user/workouts&exercises?id=${id}`,
+  const serverWorkouts = async () => {
+    try {
+      const response = await axios.get(
+        `${API_ENDPOINTS.WORKOUTS}?id=${id}`,
         {
-          headers: {
-            Authorization: "Bearer " + userAccessToken,
-          },
+          headers: getAuthHeaders(userAccessToken),
         }
-      )
-      .then((response) => {
-        // do something with the response here, like dispatch an action to update the state
-        //console.log(response.data);
-        dispatch(seeAllWorkouts({ workouts: response.data }));
-      })
-      .catch((error) => {
-        // handle the error here
-        console.log(error);
-      });
+      );
+      dispatch(seeAllWorkouts({ workouts: response.data }));
+    } catch (error) {
+      console.error("Erro ao buscar treinos:", error);
+    }
   };
 
   useEffect(() => {

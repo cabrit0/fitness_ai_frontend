@@ -58,20 +58,22 @@ export const removeUserWorkout = (workoutId) => ({
 export const fetchCalendarWorkouts = (userId, accessToken) => {
   return async (dispatch) => {
     try {
+      const { API_ENDPOINTS, getAuthHeaders } = await import("../../config/api");
+
       const response = await axios.post(
-        "https://fitness-api.onrender.com/api/v1/user/calendarOptions/workouts",
+        API_ENDPOINTS.CALENDAR.WORKOUTS,
         {
           id: userId,
         },
-        { headers: { Authorization: `Bearer ${accessToken}` } }
+        { headers: getAuthHeaders(accessToken) }
       );
       const assignedWorkouts = response.data.filter(
         (workout) => workout.calendarDate
       );
-      //console.log(assignedWorkouts);
       return assignedWorkouts;
     } catch (error) {
-      console.log(error);
+      console.error("Erro ao buscar treinos do calendário:", error);
+      return [];
     }
   };
 };

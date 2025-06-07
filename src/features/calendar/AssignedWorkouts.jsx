@@ -48,16 +48,16 @@ const AssignedWorkouts = () => {
   const handleConfirm = async () => {
     console.log(id, workoutId);
     try {
+      const { API_ENDPOINTS, getAuthHeaders } = await import("../../config/api");
+
       await axios.delete(
-        "https://fitness-api.onrender.com/api/v1/user/calendarOptions/removeWorkout",
+        API_ENDPOINTS.CALENDAR.REMOVE_WORKOUT,
         {
           data: {
             id: id,
             workoutId: workoutId,
           },
-          headers: {
-            Authorization: "Bearer " + userAccessToken,
-          },
+          headers: getAuthHeaders(userAccessToken),
         }
       );
 
@@ -65,7 +65,7 @@ const AssignedWorkouts = () => {
       dispatch(removeUserWorkout(workoutId));
       setIsModalOpen(false);
     } catch (error) {
-      console.error(error);
+      console.error("Erro ao remover workout do calendário:", error);
     }
   };
 

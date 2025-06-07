@@ -59,27 +59,25 @@ const ModalWorkoutUpdate = ({
     };
     console.log(data);
 
-    //https://fitness-api.onrender.com
-    axios
-      .patch(
-        `https://fitness-api.onrender.com/api/v1/user/workouts&exercises`,
+    try {
+      const { API_ENDPOINTS, getAuthHeaders } = await import("../config/api");
+
+      const response = await axios.patch(
+        API_ENDPOINTS.WORKOUTS,
         data,
         {
-          headers: {
-            Authorization: "Bearer " + userAccessToken,
-          },
+          headers: getAuthHeaders(userAccessToken),
         }
-      )
-      .then((response) => {
-        dispatch(updateWorkout(data));
-        console.log(response.response);
-        setMessage("Workout atualizado com sucesso!");
-        setIsUpdated(true);
-        //exitModal();
-      })
-      .catch((err) => {
-        setMessage(err.response);
-      });
+      );
+
+      dispatch(updateWorkout(data));
+      console.log(response.data);
+      setMessage("Workout atualizado com sucesso!");
+      setIsUpdated(true);
+    } catch (err) {
+      console.error("Erro ao atualizar workout:", err);
+      setMessage("Erro ao atualizar workout");
+    }
   };
 
   // Set the initial state of the input fields with the values from the current workout object

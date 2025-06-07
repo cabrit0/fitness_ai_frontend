@@ -46,8 +46,10 @@ const CreateUser = () => {
     console.log(userData);
 
     try {
+      const { API_ENDPOINTS } = await import("../../config/api");
+
       const response = await axios.post(
-        "https://fitness-api.onrender.com/api/v1/users",
+        API_ENDPOINTS.USERS,
         userData
       );
       setRequestCompleted(true);
@@ -62,9 +64,9 @@ const CreateUser = () => {
       setSexo("");
       setIdade("");
       setErrorMessage("");
-      //setPasswordValid(true);
     } catch (error) {
-      console.error(error);
+      console.error("Erro ao criar utilizador:", error);
+      setErrorMessage("Erro ao criar utilizador");
     }
   };
 

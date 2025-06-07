@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteWorkout } from "./WorkoutsSlice";
+import { API_ENDPOINTS, getAuthHeaders } from "../../config/api";
 
 const DeleteWorkout = () => {
   const workouts = useSelector((state) => state.workouts.workouts);
@@ -11,34 +12,29 @@ const DeleteWorkout = () => {
   const [message, setMessage] = useState("");
   const [isDeleted, setIsDeleted] = useState(false);
 
-  const handleDelete = (workoutId) => {
+  const handleDelete = async (workoutId) => {
     const data = {
       id: id,
       workoutId: workoutId,
     };
 
-    // send a DELETE request to the server to delete the workout from the database
-    //https://fitness-api.onrender.com
-    axios
-      .delete(
-        `https://fitness-api.onrender.com/api/v1/user/workouts&exercises/workouts/?workoutsId=${workouts}`,
+    try {
+      await axios.delete(
+        `${API_ENDPOINTS.DELETE_WORKOUT}?workoutsId=${workouts}`,
         {
           data,
-          headers: {
-            Authorization: "Bearer " + userAccessToken,
-          },
+          headers: getAuthHeaders(userAccessToken),
         }
-      )
-      .then((response) => {
-        // if the workout was successfully deleted from the database, dispatch an action to delete it from the state
-        dispatch(deleteWorkout({ workoutId }));
-        setMessage("Workout apagado com sucesso!");
-        setIsDeleted(true);
-      })
-      .catch((error) => {
-        // handle the error here
-        console.log(error);
-      });
+      );
+
+      // if the workout was successfully deleted from the database, dispatch an action to delete it from the state
+      dispatch(deleteWorkout({ workoutId }));
+      setMessage("Workout apagado com sucesso!");
+      setIsDeleted(true);
+    } catch (error) {
+      console.error("Erro ao apagar workout:", error);
+      setMessage("Erro ao apagar workout");
+    }
   };
 
   return (

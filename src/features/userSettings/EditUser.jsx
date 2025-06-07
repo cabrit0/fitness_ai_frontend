@@ -33,8 +33,10 @@ const EditUser = () => {
     };
 
     try {
+      const { API_ENDPOINTS } = await import("../../config/api");
+
       const response = await axios.patch(
-        "https://fitness-api.onrender.com/api/v1/users",
+        API_ENDPOINTS.USERS,
         userData
       );
       dispatch(updateUser(userData));
@@ -42,7 +44,7 @@ const EditUser = () => {
       setIsUpdated(true);
       console.log(response.data);
     } catch (error) {
-      console.error(error);
+      console.error("Erro ao atualizar utilizador:", error);
     }
   };
 
